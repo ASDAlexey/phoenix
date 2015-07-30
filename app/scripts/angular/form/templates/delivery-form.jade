@@ -1,0 +1,74 @@
+div
+    form.form-validate(name="formValidate" novalidate ng-controller="FormCtrl")
+        div.select-block(ng-init='dataForm.delivery=[{"name":"delivery1","maker" : "Самовывоз",ticked : true},{"name":"delivery2","maker" : "Доставка по территории Москвы",ticked : false},{"name":"delivery3","maker" : "Отправка курьерской службой",ticked : false}]')
+            div(isteven-multi-select
+            input-model="dataForm.delivery"
+            output-model="dataForm.deliverySelected"
+            button-label="maker"
+            item-label="maker"
+            tick-property="ticked"
+            disable-property="disabled"
+            selection-mode="single"
+            helper-elements)
+            p(ng-if="dataForm.deliverySelected[0].name=='delivery1'")
+                strong Адрес самовывоза:
+                |  г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.
+            p(ng-if="dataForm.deliverySelected[0].name=='delivery2'")
+                strong Стоимость доставки 350 руб.
+                |  Срок доставки - на следующий день после заказа.
+            p(ng-if="dataForm.deliverySelected[0].name=='delivery3'")
+                strong Тариф доставки
+                |  - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.
+        div.s-small.s-mr
+            label(for="lastname") Фамилия
+            input#home(type="text" name="lastname" ng-model='dataForm.data.lastname' autocomplete="off" required)
+        div.s-small.s-mr
+            label(for="firstname") Имя
+            input#housing(type="text" name="firstname" ng-model='dataForm.data.firstname' autocomplete="off" required)
+        div.s-small
+            label(for="middlename") Отчество
+            input#flat(type="text" name="middlename" ng-model='dataForm.data.middlename' autocomplete="off" required)
+        div
+            label(for="country") СТРАНА
+            input#country(type="text" name="country" ng-model='dataForm.data.country' ng-init="dataForm.data.country='РОССИЯ'" required disabled)
+        div.small.mr
+            label(for="post_index") Почтовый индекс
+            input#post_index(type="text" name="country" ng-model='dataForm.data.post_index' autocomplete="off"  required)
+        div.small
+            label(for="region") Область/Край/Регион
+            div.select-block.select-region
+                div(isteven-multi-select
+                input-model="dataForm.region"
+                output-model="dataForm.regionSelected"
+                button-label="maker"
+                item-label="maker"
+                tick-property="ticked"
+                disable-property="disabled"
+                selection-mode="single"
+                helper-elements)
+            //input#region(type="text" name="region" ng-model='dataForm.data.region'  required)
+        div.small.mr
+            label(for="city") Город
+            input#city(type="text" name="city" ng-model='dataForm.data.city' autocomplete="off" required)
+        div.small
+            label(for="street") Улица
+            input#street(type="text" name="street" ng-model='dataForm.data.street' autocomplete="off" required)
+        div.s-small.s-mr
+            label(for="home") Дом
+            input#home(type="text" name="home" ng-model='dataForm.data.home' autocomplete="off" required)
+        div.s-small.s-mr
+            label(for="housing") Корпус/Строение
+            input#housing(type="text" name="housing" ng-model='dataForm.data.housing')
+        div.s-small
+            label(for="flat") Квартира
+            input#flat(type="text" name="flat" ng-model='dataForm.data.flat')
+        div.small.mr
+            label(for="phone") Телефон
+            input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
+        div.small
+            label(for="email") E-mail
+            input#email(type="email" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
+        input(type="hidden" name="task" ng-init='dataForm.hidden.task="cart"' ng-model='dataForm.hidden.task')
+        input(type="hidden" name="isValidForm" value='{{dataForm.hidden.isValidForm=formValidate.$valid}}')
+        div.wrapper-send
+            button.send(ng-click='send(dataForm,formValidate,"delivery")') Далее

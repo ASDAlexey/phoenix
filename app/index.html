@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--html(style="opacity:0")-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Description">
+    <meta name="keywords" content="Keywords">
+    <title>Феникс</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+  </head>
+  <body pointer-events-scroll ng-controller="PopupCtrl">
+    <aside class="aside"></aside>
+    <div class="wrapper dNtoLoad">
+      <!--+header()-->
+      <main class="main">
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-map">
+        <div class="to-find-us"></div>
+      </div>
+      <div class="footer-links"></div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="copyright"><span>©</span>2015 «fenix»</div><a href="http://tutmee.ru" class="firm-logo">
+            <div><span>Создание дизайна</span><span>и разработка сайтов</span><span>LTD Tutmee.ru</span></div>
+            <div><img src="./images/firm-logo.png" width="198" height="51"></div></a>
+        </div>
+      </div>
+    </footer>
+    <!--#container-preloader.svg-container-block(preloader='[".wrapper"]' animate-preloader)-->
+    <!--    .progress-->
+    <!--        .text#persent-loaded 0-->
+    <!--        progress-circle-->
+    <!--    .content-->
+    <!--        #boxContainer.svg-container-->
+    <!--            svg#boxLoader(width='70px', height='70px', viewbox='0 0 35 35', preserveaspectratio='none')-->
+    <!--                rect(x='0', fill='#79bdbe', width='35', height='35')-->
+    <!--            svg#base(width='210px', height='210px', viewbox='0 0 105 105', preserveaspectratio='none')-->
+    <!--                line(stroke-width='1.5', fill='none', stroke='#dedede', stroke-miterlimit='10', x1='0', y1='52.5', x2='105', y2='52.5')-->
+    <!--button.up.fa.fa-angle-double-up(move-up)-->
+    <!--// popup-->
+    <!--popup-svg(name="enter").hide-block-->
+    <!--    section.authentification-block-->
+    <!--        img.logo(src="./images/popup-logo.jpg")-->
+    <!--        .flipper(flipper-x="click")-->
+    <!--            .back-->
+    <!--                form#auth-reg.form-validate.reg(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl"-->
+    <!--                ng-init="action='http://sk2.tutmee.ru/'")-->
+    <!--                    h1.title-form Регистрация-->
+    <!--                    div-->
+    <!--                        label(for="email") E-mail-->
+    <!--                        input#email(type="email" name="email" ng-model='dataForm.data.email' required)-->
+    <!--                    div-->
+    <!--                        label Пароль-->
+    <!--                        .show-psw(ng-click="determineType(isPwdShow)")-->
+    <!--                        input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)-->
+    <!--                    div-->
+    <!--                        label Повторить пароль-->
+    <!--                        .show-psw(ng-click="determineType(isPwdShow)")-->
+    <!--                        input(type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required)-->
+    <!--                    input(type="hidden" name="option" value="com_users")-->
+    <!--                    input(type="hidden" name="task" value="user.login")-->
+    <!--                    input(type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1")-->
+    <!--                    div.wrapper-send-->
+    <!--                        button.send(ng-click='send(dataForm,formValidate,action,"auth-reg")') Зарегистрироваться-->
+    <!--                    div.wrapper-link-->
+    <!--                        a(href="" ng-click="switch('enter')") Вернуться к форме входа-->
+    <!--            .front-->
+    <!--                form.form-validate#auth-enter(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate-->
+    <!--                ng-controller="FormAuthCtrl"-->
+    <!--                ng-init="action='http://sk2.tutmee.ru/'")-->
+    <!--                    h1.title-form Войти-->
+    <!--                    div-->
+    <!--                        label(for="email") E-mail-->
+    <!--                        input#email(type="email" name="email" ng-model='dataForm.data.email' required)-->
+    <!--                    div-->
+    <!--                        label(for="pwd") Пароль-->
+    <!--                        .show-psw(ng-click="determineType(isPwdShow)")-->
+    <!--                        input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)-->
+    <!--                    input(type="hidden" name="option" value="com_users")-->
+    <!--                    input(type="hidden" name="task" value="user.login")-->
+    <!--                    input(type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1")-->
+    <!--                    div.wrapper-send-->
+    <!--                        button.send(ng-click='send(dataForm,formValidate,action,"auth-enter")') Авторизоваться-->
+    <!--                    div.wrapper-link-->
+    <!--                        p У меня еще нет аккаунта-->
+    <!--                        a(href="" ng-click="switch('reg')") Зарегистрироваться-->
+    <!--// popup-->
+    <!--popup-svg(name="recall").hide-block-->
+    <!--    section.vote-block.recall-popup-block-->
+    <!--        h1.title-form Перезвоните мне-->
+    <!--        form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")-->
+    <!--            div-->
+    <!--                label(for="name") Имя-->
+    <!--                input#name(type="text" name="name" ng-model='dataForm.data.name' autocomplete="off" required)-->
+    <!--            div-->
+    <!--                label(for="phone") Телефон-->
+    <!--                input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)-->
+    <!--            div-->
+    <!--                label(for="msg") Сообщение-->
+    <!--                textarea(name="msg" ng-model='dataForm.data.msg' autocomplete="off" required)-->
+    <!--            input(type="hidden" name="task" ng-init='dataForm.hidden.task="contacts"' ng-model='dataForm.hidden.task')-->
+    <!--            div.wrapper-send-->
+    <!--                button.send(ng-click='send(dataForm,formValidate,"",action)') Отправить-->
+    <!--include ./includes/thanks.jade-->
+    <script src="./scripts/vendors/loadCSS.js"></script>
+    <script>
+      var stylesheet=loadCSS("./styles/application.css");
+      onloadCSS(stylesheet,function(){
+      });
+    </script>
+    <!--script(src="bundle.js" async)-->
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script src="http://localhost:8080/bundle.js"></script>
+  </body>
+</html>
