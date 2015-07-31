@@ -6,7 +6,8 @@
   "repository": "https://github.com/kentcdodds/webpack-angular.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --content-base app",
+    "start": "webpack-dev-server --content-base app/scripts",
+    "watch": "webpack --watch",
     "build": "NODE_ENV=production node node_modules/.bin/webpack && cp app/index.html dist/index.html"
   },
   "keywords": [
@@ -58,13 +59,23 @@
     "webpack-dev-server": "latest",
     "gulp-purifycss": "latest",
     "gulp-minify-css": "latest",
-    "gulp-webpack-build": "latest"
+    "gulp-webpack-build": "latest",
+    "webpack": "latest",
+    "ngmin-webpack-plugin": "latest",
+    "bower-webpack-plugin": "latest",
+    "path": "latest",
+    "browser-sync-webpack-plugin": "latest",
+    "browser-sync": "latest",
+    "modernizr": "latest"
   },
   "dependencies": {
     "angular": "latest",
     "angular-animate": "latest",
     "angular-messages": "latest",
     "async-uglify-js-webpack-plugin": "latest",
-    "script-loader": "latest"
+    "script-loader": "latest",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "node-libs-browser": "*"
   }
 }

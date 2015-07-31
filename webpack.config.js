@@ -1,7 +1,9 @@
 'use strict';
+var path = require('path');
 var webpack=require('webpack');
 var BowerWebpackPlugin=require("bower-webpack-plugin");
 var ngminPlugin=require("ngmin-webpack-plugin");
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 module.exports={
     context:__dirname+'\\app\\scripts',
     //entry:'.\\index.coffee',
@@ -12,7 +14,7 @@ module.exports={
 
 
     entry:{
-        lib:".\\lib.js"
+        bundle:".\\index.js"
         //layout: "./js6/layout.js",
         //dev: "./js6/controllers/auto/dev.js",
         //devs: "./js6/controllers/auto/devs.js",
@@ -34,6 +36,7 @@ module.exports={
     proxy:{
         "*":"http://localhost:3000"
     },
+
     resolve:{
         alias:{
             'TweenLite':'gsap/src/uncompressed/TweenLite'
@@ -49,7 +52,9 @@ module.exports={
             {test:/\.coffee$/,loader:"coffee-loader"},
             {test:/.*\/app\/.*\.js$/,loader:"uglify"},
             {test:/.*\/app\/.*\.ts$/,loader:"awesome-typescript-loader"},
-            {test:/.*\/app\/.*\.js$/,loader:"babel-loader"}
+            //{test:/.*\/app\/.*\.js$/,loader:"babel-loader"},
+            {test: path.join(__dirname, 'app/scripts'), loader: 'babel-loader'},
+            //{test: path.join(__dirname, 'es6'), loader: 'babel-loader'}
             //{
             //    test:/[\/\\]node_modules[\/\\]some-legacy-script[\/\\]index\.js$/,
             //    loader:"legacy"
@@ -74,6 +79,12 @@ module.exports={
         //    "window.jQuery":"jquery",
         //    "root.jQuery":"jquery"
         //}),
+        new webpack.NoErrorsPlugin(),
+        //new BrowserSyncPlugin({
+        //    host: 'localhost',
+        //    port: 3000,
+        //    server: { baseDir: ['app'] }
+        //}),
         new webpack.HotModuleReplacementPlugin(),
         //new ngminPlugin(),
         //new webpack.optimize.DedupePlugin(),
@@ -83,5 +94,8 @@ module.exports={
         //    },
         //    minimize:true
         //})
-    ]
+    ],
+    stats: {
+        colors: true
+    }
 };

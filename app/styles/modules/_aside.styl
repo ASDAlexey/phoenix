@@ -1,4 +1,5 @@
 .aside
+  padding-bottom:132px
   width:220px
   background-color:#51565a
   position:fixed
@@ -6,3 +7,78 @@
   left:0
   top:0
   height:100%
+  > *
+    padding-left:25px
+  .content-aside
+    padding-left:0
+    max-height:100%
+    overflow auto
+  .wrapper-logo
+    margin-top:30px
+  .header
+    background-color:#363a3e
+    padding:23px 0 23px 25px
+    border-bottom:1px solid #51565a
+    a
+      dibt()
+  .choise-town
+    height:38px
+    background-color:#363a3e
+  .nav
+    padding-left:0
+    margin-top:29px
+    ul
+      > li
+        margin-top:7px
+        > a
+          display:block
+          color:#e8e5d2
+          text-decoration:none
+          br(18px)
+          padding:12px 0 9px 25px
+          tn(.5s)
+          &:hover
+            background-color:#6f7579
+          &.active
+            background-color:#a7e53b
+            color:#51565a
+  .info
+    position:absolute
+    z-index:0
+    left:0
+    bottom:20px
+    width:100%
+    dt
+      display:block
+      margin:12px 0
+      a
+        position:relative
+        z-index:0
+        margin-left:19px
+        color:#e8e5d2
+        rl(14px)
+        text-decoration:none
+        &:after
+          content:''
+          position:absolute
+          z-index:1
+          sprite($phone)
+          left:-25px
+          margin-top:1px
+          top:50%
+          tt(0, -50%)
+    dd
+      a
+        text-decoration:none
+        dibt()
+      &:first-child
+        a
+          color:#fff
+          rcr(24px)
+          span
+            color:#9a9a9a
+            rcr(24px)
+      &:nth-of-type(2)
+        a
+          color:#e5696b
+          rl()

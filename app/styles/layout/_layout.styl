@@ -3,24 +3,29 @@ html, body, .wrapper
 body > .wrapper
   height:auto
   min-height:100%
-  width:1246px
   background-color:#fff
   padding-bottom:976px
-  margin-left:220px
+  padding-left:220px
+  width:100%
+  +below(1540px)
+    padding-bottom:1064px
 body
   background-color:#fff
 .footer
-  margin-left:220px
+  padding-left:220px
   margin-top:-976px
+  +below(1540px)
+    margin-top:-1064px
 .content-block
   after()
-  width:1246px
+  width:1000px
   padding:0 33px
 .container
-  width:1246px
+  width:1000px
   padding:0 33px
-.main
-  padding-bottom:44px
+.title-default
+  color:#51565a
+  br(36px)
 @media screen and (max-width:1100px)
   html, body
     overflow-x:hidden

@@ -18,32 +18,65 @@ gutil = require('gulp-util')
 htmlmin = require('gulp-htmlmin')
 purify = require('gulp-purifycss')
 minifyCss = require('gulp-minify-css')
-webpack = require('gulp-webpack-build');
+webpack = require('gulp-webpack-build')
+path = require('path')
+browserSync = require('browser-sync').create()
+reload = browserSync.reload
 
-src = './script'
-dest = './script'
+#src = './app/script'
+#dest = './app/script'
+#webpackOptions =
+#  debug: true
+#  devtool: '#source-map'
+#  watchDelay: 200
+#webpackConfig =
+#  useMemoryFs: true
+#  progress: true
+#CONFIG_FILENAME = webpack.config.CONFIG_FILENAME
+#gulp.task 'webpack', [], ->
+#  gulp.src(path.join(src, '*.js', CONFIG_FILENAME), base: path.resolve(src)).pipe(webpack.init(webpackConfig)).pipe(webpack.props(webpackOptions)).pipe(webpack.run()).pipe(webpack.format(
+#    version: false
+#    timings: true)).pipe(webpack.failAfter(
+#    errors: true
+#    warnings: true)).pipe gulp.dest(dest)
+
+src = './'
+dest = './'
 webpackOptions =
-  debug: true
-  devtool: '#source-map'
-  watchDelay: 200
+  debug : true
+  devtool : '#source-map'
+  watchDelay : 200
 webpackConfig =
-  useMemoryFs: true
-  progress: true
+  useMemoryFs : true
+  progress : true
 CONFIG_FILENAME = webpack.config.CONFIG_FILENAME
-gulp.task 'webpack', [], ->
-  gulp.src(path.join(src, '*.js', CONFIG_FILENAME), base: path.resolve(src)).pipe(webpack.init(webpackConfig)).pipe(webpack.props(webpackOptions)).pipe(webpack.run()).pipe(webpack.format(
-    version: false
-    timings: true)).pipe(webpack.failAfter(
-    errors: true
-    warnings: true)).pipe gulp.dest(dest)
+gulp.task 'webpack',[],->
+  gulp.src(path.join(src,'**',CONFIG_FILENAME),
+    base : path.resolve(src)).pipe(webpack.init(webpackConfig)).pipe(webpack.props(webpackOptions)).pipe(webpack.run()).pipe(webpack.format(
+      version : false
+      timings : true)).pipe(webpack.failAfter(
+      errors : true
+      warnings : true)).pipe gulp.dest(dest)
+gulp.task 'webpack-watch',->
+  gulp.watch(path.join(src,'app/scripts/**/**/*.*')).on 'change',(event) ->
+    if event.type == 'changed'
+      gulp.src(event.path,
+        base : path.resolve(src)).pipe(webpack.closest(CONFIG_FILENAME)).pipe(webpack.init(webpackConfig)).pipe(webpack.props(webpackOptions)).pipe webpack.watch((err,stats) ->
+        gulp.src(@path,base : @base).pipe(webpack.proxy(err,stats)).pipe(webpack.format(
+          verbose : true
+          version : false))
+        .pipe gulp.dest(dest)
+      )
 
-gulp.task 'purify-css', ->
+
+gulp.task 'purify-css',->
   gulp.src('./app/styles/application.css').pipe(purify([
     './app/bundle.js'
     './app/*.html'
   ])).pipe(minifyCss()).pipe gulp.dest('./app/styles/')
-gulp.task 'minifyHTML', ->
-  gulp.src('./app/*.html').pipe(htmlmin(collapseWhitespace: true)).pipe gulp.dest('./app/')
+
+gulp.task 'minifyHTML',->
+  gulp.src('./app/*.html').pipe(htmlmin(collapseWhitespace : true)).pipe gulp.dest('./app/')
 gulp.task 'imagemin',->
   gulp.src('./app/images/**/*').pipe(imagemin(
     progressive : true
@@ -91,7 +124,7 @@ gulp.task 'stylus',->
       sourcemaps : true
     ))
   .pipe gulp.dest('./app/styles')
-  .pipe(connect.reload())
+#  .pipe(connect.reload())
 gulp.task 'sprite',->
   spriteData = gulp.src('./app/images/sprite/*.*').pipe(spritesmith(
     imgName : '../images/sprite.png'
@@ -102,10 +135,9 @@ gulp.task 'sprite',->
 gulp.task 'jade',->
   data = {}
   data.images = {}
+  data.why_we = require './app/json/why-we.json'
   data.catalog = require './app/json/catalog.json'
-  data.cart = require './app/json/cart.json'
-#  data.images.bgslider = scandir('./app/images/main-slider','names')
-  #  data.images.newSlider = scandir('./app/images/new-slider','names')
+  #  data.images.bgslider = scandir('./app/images/main-slider','names')
   gulp.src('./app/jade/pages/*.jade')
   .pipe(plumber(errorHandler : (error,file) ->
       console.log error.message
@@ -116,21 +148,26 @@ gulp.task 'jade',->
       locals : data
     ))
   .pipe gulp.dest('./app/')
-  .pipe(connect.reload())
-gulp.task 'connect',->
-  connect.server
-    root : 'app'
-    livereload : true
-    port : 3000
+gulp.task 'browser-sync',->
+  browserSync.init({
+    server : {
+      baseDir : "./app"
+      host : "localhost",
+      port : "3002"
+    }
+  });
 gulp.task 'watch',->
   gulp.watch './app/styles/**/*.styl',['stylus']
   gulp.watch './app/styles/_sprite.styl',['sprite']
-  gulp.watch './app/jade/**/*.jade',['jade']
-  gulp.watch './app/json/**/*.json',['jade']
+  #  gulp.watch './app/jade/**/*.jade',['jade']
+  #  gulp.watch './app/json/**/*.json',['jade']
+  gulp.watch('./app/jade/**/*.jade',['jade'])
+  gulp.watch('./app/*.html').on('change',browserSync.reload)
+  gulp.watch('./app/styles/application.css').on('change',browserSync.reload)
 gulp.task 'default',[
-  'sprite'
-  'stylus'
+#  'webpack'
+#  'webpack-watch'
   'jade'
+  'browser-sync'
   'watch'
-  'connect'
 ]
