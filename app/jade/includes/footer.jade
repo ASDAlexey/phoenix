@@ -7,6 +7,9 @@ footer.footer
                 li 8 (800) 775-93-38
                 li mail@tdfenix.com
                 li 428032, г Чебоксары,пл. Речников, д 3,помещение №2, офис 11
+        .wrapper-footer-map(ng-controller="GMapCtrl")
+            ui-gmap-google-map(center='{"latitude": 56.1482938,"longitude": 47.2592382}' zoom='16' options="options")
+                ui-gmap-marker(coords='{"latitude": 56.1482938,"longitude": 47.2592382}' options="marker.options" idkey="1" ng-init="marker.options.icon='images/map-logo.png'")
     .footer-links
         div.block
             h3 Главное меню
@@ -25,63 +28,63 @@ footer.footer
             h3 Навигация
             ul
                 li
-                    a(href="./") Виды бензина
+                    a(href="./navigation.html") Виды бензина
                 li
-                    a(href="./") АИ-92-4
+                    a(href="./navigation.html") АИ-92-4
                 li
-                    a(href="./") АИ-95-4
+                    a(href="./navigation.html") АИ-95-4
                 li
-                    a(href="./") Виды дизеля
+                    a(href="./navigation.html") Виды дизеля
                 li
-                    a(href="./") Дизельное топливо
+                    a(href="./navigation.html") Дизельное топливо
                 li
-                    a(href="./") СМТ
+                    a(href="./navigation.html") СМТ
                 li
-                    a(href="./") Печное топливо
+                    a(href="./navigation.html") Печное топливо
                 li
-                    a(href="./") Виды керосина
+                    a(href="./navigation.html") Виды керосина
                 li
-                    a(href="./") Керосин
+                    a(href="./navigation.html") Керосин
         div.block
             h3 Производители
             // В случае если у ul более 9 элементов, то ul добаляется класс .double-width
             ul.double-width
                 li
-                    a(href="./") Антипинский НПЗ
+                    a(href="./manufacturer.html") Антипинский НПЗ
                 li
-                    a(href="./") Астраханский ГПЗ
+                    a(href="./manufacturer.html") Астраханский ГПЗ
                 li
-                    a(href="./") Газпром нефтехим Салават
+                    a(href="./manufacturer.html") Газпром нефтехим Салават
                 li
-                    a(href="./") Газпромнефть-МНПЗ
+                    a(href="./manufacturer.html") Газпромнефть-МНПЗ
                 li
-                    a(href="./") КРУ Татнефть АЗС-Центр
+                    a(href="./manufacturer.html") КРУ Татнефть АЗС-Центр
                 li
-                    a(href="./") Куйбышевский НПЗ
+                    a(href="./manufacturer.html") Куйбышевский НПЗ
                 li
-                    a(href="./") НПЗ ТАНЕКО
+                    a(href="./manufacturer.html") НПЗ ТАНЕКО
                 li
-                    a(href="./") Новойл
+                    a(href="./manufacturer.html") Новойл
                 li
-                    a(href="./") НПК
+                    a(href="./manufacturer.html") НПК
                 li
-                    a(href="./") СЗСК Газпром переработка
+                    a(href="./manufacturer.html") СЗСК Газпром переработка
                 li
-                    a(href="./") Славнефть
+                    a(href="./manufacturer.html") Славнефть
                 li
-                    a(href="./") Сызранский НПЗ
+                    a(href="./manufacturer.html") Сызранский НПЗ
                 li
-                    a(href="./") ТАИФ
+                    a(href="./manufacturer.html") ТАИФ
                 li
-                    a(href="./") Уфанефтехим
+                    a(href="./manufacturer.html") Уфанефтехим
                 li
-                    a(href="./") Уфимский НПЗ
+                    a(href="./manufacturer.html") Уфимский НПЗ
                 li
-                    a(href="./") ЧН Татнефть АЗС-Центр
+                    a(href="./manufacturer.html") ЧН Татнефть АЗС-Центр
         .block.also-questions
             h3 Остались вопросы?
             div
-                a Задайте их менеджеру
+                a(ng-click="openPopup('ask_questions',{})") Задайте их менеджеру
     .footer-bottom
         .container
             .copyright

@@ -7,10 +7,37 @@ html
     body(pointer-events-scroll ng-controller="PopupCtrl")
         include ./includes/aside.jade
         .wrapper.dNtoLoad
-            | 11sdfdsf
             main.main
                 block content
         include ./includes/footer.jade
+        button.write_to_us.animated(ng-class="{'rubberBand':animated == true}" ng-mouseenter="enterEffect()" ng-mouseleave="leaveEffect()")
+            span
+                span
+            span
+            span
+        button.up(move-up)
+        // popup
+        popup-svg(name="ask_questions").hide-block
+            section.vote-block.recall-popup-block
+                h1.title-form Напишите нам
+                form.form-validate(name="formValidate" ng-init="action='./controller.php'" novalidate ng-if="isCalcForm")
+                    div
+                        input#from(type="text" name="from" ng-model='dataForm.data.from' autocomplete="off" required)
+                        label(for="from") Откуда
+                    div
+                        input#to(type="text" name="to" ng-model='dataForm.data.to' autocomplete="off" required)
+                        label(for="to") Куда
+                    div
+                        input#type_of_product(type="text" name="type_of_product" ng-model='dataForm.data.type_of_product' autocomplete="off" required)
+                        label(for="type_of_product") Вид продукта
+                    .wrapper-send
+                    div
+                        input#quantity_tons(type="text" name="quantity_tons" ng-model='dataForm.data.quantity_tons' autocomplete="off" required only-int-numbers)
+                        label(for="quantity_tons") Количество тонн
+                    .wrapper-send
+                        button.send(ng-click='send(dataForm,formValidate,action)')
+                            span расчитать
+                    input(type="hidden" name="task" ng-init='dataForm.hidden.task="calculate_order"' ng-model='dataForm.hidden.task')
 //#container-preloader.svg-container-block(preloader='[".wrapper"]' animate-preloader)
 //    .progress
 //        .text#persent-loaded 0
@@ -21,7 +48,6 @@ html
 //                rect(x='0', fill='#79bdbe', width='35', height='35')
 //            svg#base(width='210px', height='210px', viewbox='0 0 105 105', preserveaspectratio='none')
 //                line(stroke-width='1.5', fill='none', stroke='#dedede', stroke-miterlimit='10', x1='0', y1='52.5', x2='105', y2='52.5')
-//button.up.fa.fa-angle-double-up(move-up)
 //// popup
 //popup-svg(name="enter").hide-block
 //    section.authentification-block
@@ -70,22 +96,6 @@ html
 //                        p У меня еще нет аккаунта
 //                        a(href="" ng-click="switch('reg')") Зарегистрироваться
 //// popup
-//popup-svg(name="recall").hide-block
-//    section.vote-block.recall-popup-block
-//        h1.title-form Перезвоните мне
-//        form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")
-//            div
-//                label(for="name") Имя
-//                input#name(type="text" name="name" ng-model='dataForm.data.name' autocomplete="off" required)
-//            div
-//                label(for="phone") Телефон
-//                input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
-//            div
-//                label(for="msg") Сообщение
-//                textarea(name="msg" ng-model='dataForm.data.msg' autocomplete="off" required)
-//            input(type="hidden" name="task" ng-init='dataForm.hidden.task="contacts"' ng-model='dataForm.hidden.task')
-//            div.wrapper-send
-//                button.send(ng-click='send(dataForm,formValidate,"",action)') Отправить
 //include ./includes/thanks.jade
 //script(src='./scripts/vendors/loadCSS.js')
 //script.
@@ -93,5 +103,8 @@ html
 //    onloadCSS(stylesheet,function(){
 //    });
 //script(src="scripts/bundle.js" async)
+script(src="./scripts/vendors/modernizr/modernizr.js")
+script(src="./scripts/vendors/preloadjs-0.6.1.min.js")
+script(src="./scripts/vendors/snap.svg.js")
 script(src="http://localhost:8080/webpack-dev-server.js")
 script(src="http://localhost:8080/bundle.js")

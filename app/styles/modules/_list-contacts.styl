@@ -1,0 +1,62 @@
+.list-contacts
+  display:table
+  width:100%
+  > li
+    display:table-row
+    width:100%
+    font-size:0
+    &:hover
+      .info
+        background-color:#f9f8ef
+    .wrapper-img
+      text-align:center
+      width:267px
+      display:table-cell
+      vertical-align:middle
+      position:relative
+      z-index:0
+      img
+        dibt()
+        max-width 100%
+        &.no-img
+          margin:19px
+    .info
+      tn(.5s)
+      padding-left:32px
+      display:table-cell
+      vertical-align:middle
+      h1
+        color:#51565a
+        rm(24px)
+      ul
+        > li
+          text-align:left
+          color:#51565a
+          rl(16px)
+          a
+            text-decoration:none
+            margin-left:26px
+            position:relative
+            z-index:0
+            &:after
+              content:''
+              left:-26px
+              top:50%
+              margin-top:1px
+              tt(0, -50%)
+              position:absolute
+              z-index:1
+          &:first-child
+            margin-top:22px
+          &:nth-child(2)
+            margin-top:23px
+            a
+              color:#51565a
+              &:after
+                sprite($phone)
+          &:last-child
+            margin-top:5px
+            a
+              color:#e5696b
+              &:after
+                sprite($email)

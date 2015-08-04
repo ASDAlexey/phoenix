@@ -1,5 +1,5 @@
 .status
-  padding:57px 0 57px 36px
+  padding:57px 0 87px 36px
   .inner-status
     white-space nowrap
     > *
@@ -187,6 +187,77 @@
                 width:100%
                 height:100%
                 background-color:#e5696b
+  &.navigation-list
+    .list-products
+      > li
+        &:nth-child(2n)
+          &:after
+            background-color:rgba(#fff, 0)
+        &:nth-child(2n+1)
+          &:after
+            background-color:rgba(#fff, .3)
+        .row
+          .info
+            position:relative
+            z-index:0
+            padding-left:33px
+            .wrapper-img
+              position:relative
+              z-index:0
+              width:100px
+              height:100px
+              overflow hidden
+              dibt()
+              border-radius:50%
+              background-color:#fff
+              img
+                max-width 100px
+                max-height 100px
+                aa(1)
+                display:block
+            ul
+              padding-right:27px
+              left:150px
+              position:absolute
+              top:50%
+              z-index:0
+              tt(0, -50%)
+              width:calc(100% - 158px)
+              dibt()
+              li
+                color:#d9d6bf
+                rl(16px)
+                h2
+                  color:#d9d6bf
+                  rb(16px)
+      ul
+        &:after
+          display:none
+    .description
+      ul
+        li
+          &:first-child
+            margin-bottom:23px
+            a
+              &:after
+                sprite($pdf)
+          &:last-child
+            a
+              &:after
+                sprite($rub)
+          a
+            margin-left:22px
+            color:#e5696b
+            text-decoration:none
+            position:relative
+            z-index:0
+            &:after
+              content:''
+              position:absolute
+              z-index:1
+              left:-22px
+              top:50%
+              tt(0, -50%)
 .collaborate
   padding:74px 0 54px 37px
   ul

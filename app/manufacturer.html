@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--html(style="opacity:0")-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1200">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Description">
+    <meta name="keywords" content="Keywords">
+    <title>Феникс</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="stylesheet" href="./styles/application.css">
+  </head>
+  <body pointer-events-scroll ng-controller="PopupCtrl">
+    <aside class="aside">
+      <div class="content-aside">
+        <header class="header"><a href="./" class="wrapper-logo"><img src="./images/logo.png" width="107" height="53"></a></header>
+        <div class="choise-town"></div>
+        <nav class="nav">
+          <ul>
+            <li><a href="./documentation.html">Документация</a></li>
+            <li><a href="./checkout.html" class="active">Оформление заказа</a></li>
+            <li><a href="./rent.html">Аренда бензовозов</a></li>
+            <li><a href="./price.html">Цены</a></li>
+            <li><a href="./contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+      <dl class="info">
+        <dd><a href="tel:+78007759338"><span>8-800</span>-775-93-38</a></dd>
+        <dt><a>Заказать звонок</a></dt>
+        <dd><a href="mailto:mail@tdfenix.com?subject=Заказать звонок">mail@tdfenix.com</a></dd>
+      </dl>
+    </aside>
+    <div class="wrapper dNtoLoad">
+      <main class="main">
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-map">
+        <div class="to-find-us">
+          <h1 class="title">Как нас найти</h1>
+          <h2>ООО «Феникс»</h2>
+          <ul>
+            <li>8 (800) 775-93-38</li>
+            <li>mail@tdfenix.com</li>
+            <li>428032, г Чебоксары,пл. Речников, д 3,помещение №2, офис 11</li>
+          </ul>
+        </div>
+        <div ng-controller="GMapCtrl" class="wrapper-footer-map">
+          <ui-gmap-google-map center="{&quot;latitude&quot;: 56.1482938,&quot;longitude&quot;: 47.2592382}" zoom="16" options="options">
+            <ui-gmap-marker coords="{&quot;latitude&quot;: 56.1482938,&quot;longitude&quot;: 47.2592382}" options="marker.options" idkey="1" ng-init="marker.options.icon='images/map-logo.png'"></ui-gmap-marker>
+          </ui-gmap-google-map>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="block">
+          <h3>Главное меню</h3>
+          <ul>
+            <li><a href="./">Документация</a></li>
+            <li><a href="./">Оформление заказа</a></li>
+            <li><a href="./">Аренда бензовозов</a></li>
+            <li><a href="./">Цены</a></li>
+            <li><a href="./">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Навигация</h3>
+          <ul>
+            <li><a href="./navigation.html">Виды бензина</a></li>
+            <li><a href="./navigation.html">АИ-92-4</a></li>
+            <li><a href="./navigation.html">АИ-95-4</a></li>
+            <li><a href="./navigation.html">Виды дизеля</a></li>
+            <li><a href="./navigation.html">Дизельное топливо</a></li>
+            <li><a href="./navigation.html">СМТ</a></li>
+            <li><a href="./navigation.html">Печное топливо</a></li>
+            <li><a href="./navigation.html">Виды керосина</a></li>
+            <li><a href="./navigation.html">Керосин</a></li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Производители</h3>
+          <!-- В случае если у ul более 9 элементов, то ul добаляется класс .double-width-->
+          <ul class="double-width">
+            <li><a href="./manufacturer.html">Антипинский НПЗ</a></li>
+            <li><a href="./manufacturer.html">Астраханский ГПЗ</a></li>
+            <li><a href="./manufacturer.html">Газпром нефтехим Салават</a></li>
+            <li><a href="./manufacturer.html">Газпромнефть-МНПЗ</a></li>
+            <li><a href="./manufacturer.html">КРУ Татнефть АЗС-Центр</a></li>
+            <li><a href="./manufacturer.html">Куйбышевский НПЗ</a></li>
+            <li><a href="./manufacturer.html">НПЗ ТАНЕКО</a></li>
+            <li><a href="./manufacturer.html">Новойл</a></li>
+            <li><a href="./manufacturer.html">НПК</a></li>
+            <li><a href="./manufacturer.html">СЗСК Газпром переработка</a></li>
+            <li><a href="./manufacturer.html">Славнефть</a></li>
+            <li><a href="./manufacturer.html">Сызранский НПЗ</a></li>
+            <li><a href="./manufacturer.html">ТАИФ</a></li>
+            <li><a href="./manufacturer.html">Уфанефтехим</a></li>
+            <li><a href="./manufacturer.html">Уфимский НПЗ</a></li>
+            <li><a href="./manufacturer.html">ЧН Татнефть АЗС-Центр</a></li>
+          </ul>
+        </div>
+        <div class="block also-questions">
+          <h3>Остались вопросы?</h3>
+          <div><a ng-click="openPopup('ask_questions',{})">Задайте их менеджеру</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="copyright"><span>©</span>2015 «fenix»</div><a href="http://tutmee.ru" class="firm-logo">
+            <div><span>Создание дизайна</span><span>и разработка сайтов</span><span>LTD Tutmee.ru</span></div>
+            <div><img src="./images/firm-logo.png" width="198" height="51"></div></a>
+        </div>
+      </div>
+    </footer>
+    <button ng-class="{'rubberBand':animated == true}" ng-mouseenter="enterEffect()" ng-mouseleave="leaveEffect()" class="write_to_us animated"><span><span></span></span><span></span><span></span></button>
+    <button move-up class="up"></button>
+    <!-- popup-->
+    <popup-svg name="ask_questions" class="hide-block">
+      <section class="vote-block recall-popup-block">
+        <h1 class="title-form">Напишите нам</h1>
+        <form name="formValidate" ng-init="action='./controller.php'" novalidate ng-if="isCalcForm" class="form-validate">
+          <div>
+            <input id="from" type="text" name="from" ng-model="dataForm.data.from" autocomplete="off" required>
+            <label for="from">Откуда</label>
+          </div>
+          <div>
+            <input id="to" type="text" name="to" ng-model="dataForm.data.to" autocomplete="off" required>
+            <label for="to">Куда</label>
+          </div>
+          <div>
+            <input id="type_of_product" type="text" name="type_of_product" ng-model="dataForm.data.type_of_product" autocomplete="off" required>
+            <label for="type_of_product">Вид продукта</label>
+          </div>
+          <div class="wrapper-send"></div>
+          <div>
+            <input id="quantity_tons" type="text" name="quantity_tons" ng-model="dataForm.data.quantity_tons" autocomplete="off" required only-int-numbers>
+            <label for="quantity_tons">Количество тонн</label>
+          </div>
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send"><span>расчитать</span></button>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;calculate_order&quot;" ng-model="dataForm.hidden.task">
+        </form>
+      </section>
+    </popup-svg>
+  </body>
+</html>
+<!--#container-preloader.svg-container-block(preloader='[".wrapper"]' animate-preloader)-->
+<!--    .progress-->
+<!--        .text#persent-loaded 0-->
+<!--        progress-circle-->
+<!--    .content-->
+<!--        #boxContainer.svg-container-->
+<!--            svg#boxLoader(width='70px', height='70px', viewbox='0 0 35 35', preserveaspectratio='none')-->
+<!--                rect(x='0', fill='#79bdbe', width='35', height='35')-->
+<!--            svg#base(width='210px', height='210px', viewbox='0 0 105 105', preserveaspectratio='none')-->
+<!--                line(stroke-width='1.5', fill='none', stroke='#dedede', stroke-miterlimit='10', x1='0', y1='52.5', x2='105', y2='52.5')-->
+<!--// popup-->
+<!--popup-svg(name="enter").hide-block-->
+<!--    section.authentification-block-->
+<!--        img.logo(src="./images/popup-logo.jpg")-->
+<!--        .flipper(flipper-x="click")-->
+<!--            .back-->
+<!--                form#auth-reg.form-validate.reg(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl"-->
+<!--                ng-init="action='http://sk2.tutmee.ru/'")-->
+<!--                    h1.title-form Регистрация-->
+<!--                    div-->
+<!--                        label(for="email") E-mail-->
+<!--                        input#email(type="email" name="email" ng-model='dataForm.data.email' required)-->
+<!--                    div-->
+<!--                        label Пароль-->
+<!--                        .show-psw(ng-click="determineType(isPwdShow)")-->
+<!--                        input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)-->
+<!--                    div-->
+<!--                        label Повторить пароль-->
+<!--                        .show-psw(ng-click="determineType(isPwdShow)")-->
+<!--                        input(type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required)-->
+<!--                    input(type="hidden" name="option" value="com_users")-->
+<!--                    input(type="hidden" name="task" value="user.login")-->
+<!--                    input(type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1")-->
+<!--                    div.wrapper-send-->
+<!--                        button.send(ng-click='send(dataForm,formValidate,action,"auth-reg")') Зарегистрироваться-->
+<!--                    div.wrapper-link-->
+<!--                        a(href="" ng-click="switch('enter')") Вернуться к форме входа-->
+<!--            .front-->
+<!--                form.form-validate#auth-enter(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate-->
+<!--                ng-controller="FormAuthCtrl"-->
+<!--                ng-init="action='http://sk2.tutmee.ru/'")-->
+<!--                    h1.title-form Войти-->
+<!--                    div-->
+<!--                        label(for="email") E-mail-->
+<!--                        input#email(type="email" name="email" ng-model='dataForm.data.email' required)-->
+<!--                    div-->
+<!--                        label(for="pwd") Пароль-->
+<!--                        .show-psw(ng-click="determineType(isPwdShow)")-->
+<!--                        input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)-->
+<!--                    input(type="hidden" name="option" value="com_users")-->
+<!--                    input(type="hidden" name="task" value="user.login")-->
+<!--                    input(type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1")-->
+<!--                    div.wrapper-send-->
+<!--                        button.send(ng-click='send(dataForm,formValidate,action,"auth-enter")') Авторизоваться-->
+<!--                    div.wrapper-link-->
+<!--                        p У меня еще нет аккаунта-->
+<!--                        a(href="" ng-click="switch('reg')") Зарегистрироваться-->
+<!--// popup-->
+<!--include ./includes/thanks.jade-->
+<!--script(src='./scripts/vendors/loadCSS.js')-->
+<!--script.-->
+<!--    var stylesheet=loadCSS("./styles/application.css");-->
+<!--    onloadCSS(stylesheet,function(){-->
+<!--    });-->
+<!--script(src="scripts/bundle.js" async)-->
+<script src="./scripts/vendors/modernizr/modernizr.js"></script>
+<script src="./scripts/vendors/preloadjs-0.6.1.min.js"></script>
+<script src="./scripts/vendors/snap.svg.js"></script>
+<script src="http://localhost:8080/webpack-dev-server.js"></script>
+<script src="http://localhost:8080/bundle.js"></script>

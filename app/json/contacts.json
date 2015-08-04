@@ -1,0 +1,23 @@
+[
+  {
+    "src": "./images/contacts/1.jpg",
+    "name": "Павел Семенов",
+    "position": "Генеральный директор",
+    "phone": "8(927) 867-07-20",
+    "email": "pavel@tdfenix.com"
+  },
+  {
+    "src": "./images/contacts/2.jpg",
+    "name": "Андрей Павлов",
+    "position": "Начальник автоколонны",
+    "phone": "8(927) 997-78-61",
+    "email": "auto@tdfenix.com"
+  },
+  {
+    "src": "./images/contacts/no-photo.jpg",
+    "name": "Николай Софронов",
+    "position": "Руководитель отдела логистики",
+    "phone": "8(937) 389-77-45",
+    "email": "logist@tdfenix.com"
+  }
+]

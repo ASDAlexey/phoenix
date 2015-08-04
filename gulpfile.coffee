@@ -21,24 +21,8 @@ minifyCss = require('gulp-minify-css')
 webpack = require('gulp-webpack-build')
 path = require('path')
 browserSync = require('browser-sync').create()
+watch = require('gulp-watch')
 reload = browserSync.reload
-
-#src = './app/script'
-#dest = './app/script'
-#webpackOptions =
-#  debug: true
-#  devtool: '#source-map'
-#  watchDelay: 200
-#webpackConfig =
-#  useMemoryFs: true
-#  progress: true
-#CONFIG_FILENAME = webpack.config.CONFIG_FILENAME
-#gulp.task 'webpack', [], ->
-#  gulp.src(path.join(src, '*.js', CONFIG_FILENAME), base: path.resolve(src)).pipe(webpack.init(webpackConfig)).pipe(webpack.props(webpackOptions)).pipe(webpack.run()).pipe(webpack.format(
-#    version: false
-#    timings: true)).pipe(webpack.failAfter(
-#    errors: true
-#    warnings: true)).pipe gulp.dest(dest)
 
 src = './'
 dest = './'
@@ -82,11 +66,11 @@ gulp.task 'imagemin',->
     progressive : true
     svgoPlugins : [{removeViewBox : false}]
     use : [pngquant()])).pipe gulp.dest('./app/images')
-gulp.task 'watchConsole',->
-  exec = require('child_process').exec
-  watch = require('gulp-watch')
-  watch './app/images/**/*.{jpg,jpeg,png,gif}',->
-    exec 'chmod 755 -R ./app/images'
+#gulp.task 'watchConsole',->
+#  exec = require('child_process').exec
+#  watch = require('gulp-watch')
+#  watch './app/images/**/*.{jpg,jpeg,png,gif}',->
+#    exec 'chmod 755 -R ./app/images'
 gulp.task 'stylus',->
   gulp.src('./app/styles/application.styl')
   .pipe(plumber(errorHandler : (error,file) ->
@@ -137,6 +121,8 @@ gulp.task 'jade',->
   data.images = {}
   data.why_we = require './app/json/why-we.json'
   data.catalog = require './app/json/catalog.json'
+  data.navigation_list = require './app/json/navigation-list.json'
+  data.contacts = require './app/json/contacts.json'
   #  data.images.bgslider = scandir('./app/images/main-slider','names')
   gulp.src('./app/jade/pages/*.jade')
   .pipe(plumber(errorHandler : (error,file) ->
@@ -149,25 +135,27 @@ gulp.task 'jade',->
     ))
   .pipe gulp.dest('./app/')
 gulp.task 'browser-sync',->
-  browserSync.init({
-    server : {
+  browserSync.init(
+    server :
       baseDir : "./app"
-      host : "localhost",
-      port : "3002"
-    }
-  });
+    open : false
+  )
+gulp.task 'watchSprite',->
+  watch './app/images/sprite/*.*',->
+    gulp.start('stylus')
+  watch './app/jade/**/*.jade',->
+    gulp.start('jade')
+  watch './app/json/**/*.json',->
+    gulp.start('jade')
+  watch './app/styles/**/*.styl',->
+    gulp.start('stylus')
 gulp.task 'watch',->
-  gulp.watch './app/styles/**/*.styl',['stylus']
-  gulp.watch './app/styles/_sprite.styl',['sprite']
-  #  gulp.watch './app/jade/**/*.jade',['jade']
-  #  gulp.watch './app/json/**/*.json',['jade']
-  gulp.watch('./app/jade/**/*.jade',['jade'])
   gulp.watch('./app/*.html').on('change',browserSync.reload)
   gulp.watch('./app/styles/application.css').on('change',browserSync.reload)
 gulp.task 'default',[
-#  'webpack'
-#  'webpack-watch'
+  'sprite'
   'jade'
   'browser-sync'
   'watch'
+  'watchSprite'
 ]

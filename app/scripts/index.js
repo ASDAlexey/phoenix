@@ -1,24 +1,17 @@
-//import 'angular'
-//import './plugins/vinilla.js'
-console.log('sf22221112');
-//require('./vendors/cssua.js')
-//angular = require('angular')
-//require('angular-resource')
-//require('angular-cookies')
-//require('gsap')
-//require('gsap/src/uncompressed/utils/Draggable.js')
-//require('gsap/src/uncompressed/plugins/ScrollToPlugin.js')
-//require('./plugins/ThrowPropsPlugin.min.js')
-//require('./plugins/DrawSVGPlugin.min-modif.js')
-//require('imports-loader?this=>window!./vendors/preloadjs-0.6.1.min.js')
-//require('lodash')
-//require('./plugins/angular-ui-utils/ui-utils.js')
-//require('angular-validation-match')
-//require('angular-animate')
-//Snap = require("imports-loader?this=>window,fix=>module.exports=0!./vendors/snap.svg.js")
-//#require('./plugins/angular-google-maps.min.js')
-//#require('./plugins/angular-range-slider.js')
-//require('./plugins/angular-awesome-slider.min.js')
-//#require('./plugins/angular-multi-select.js')
-//require('./plugins/isteven-multi-select.js')
-//require('./angular/app.coffee')(angular)
+//require('imports-loader?this=>window!./vendors/modernizr/modernizr.js');
+import 'angular';
+import './plugins/vinilla.js';
+import './vendors/cssua.js';
+import 'angular-resource';
+import 'gsap';
+import 'gsap/src/uncompressed/utils/Draggable.js';
+import 'gsap/src/uncompressed/plugins/ScrollToPlugin.js';
+import './plugins/ThrowPropsPlugin.min.js';
+import 'lodash';
+import './plugins/angular-ui-utils/ui-utils.js';
+//require('imports-loader?this=>window!./vendors/preloadjs-0.6.1.min.js');
+//require("imports-loader?this=>window,fix=>module.exports=0!./vendors/snap.svg.js")
+import 'angular-validation-match';
+import 'angular-animate';
+import 'angular-google-maps';
+import './angular/app.js';

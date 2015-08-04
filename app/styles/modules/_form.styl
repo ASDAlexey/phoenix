@@ -1,0 +1,81 @@
+.status
+  .form-validate
+    position:relative
+    z-index:0
+    button
+      &:before
+        sprite($show)
+        left:15px
+        top:9px
+    input
+      margin:0 22px 0 24px
+    > span
+      cursor:pointer
+      border-bottom:1px dashed #e5696b
+      position:absolute
+      z-index:0
+      left:45px
+      bottom:-35px
+      dibt()
+      color:#e5696b
+      text-align:center
+      &:after
+        content:''
+        position:absolute
+        z-index:1
+        sprite($question)
+        left:-23px
+        top:0
+.form-validate
+  input
+    width:281px
+    height:29px
+    dibt()
+    margin-top:4px
+    border-bottom:1px solid #a8aaac
+  button
+    width:168px
+    dibt()
+    overflow hidden
+    border-radius:6px
+    after()
+    background-color:#e5696b
+    text-decoration:none
+    height:32px
+    position:relative
+    z-index:0
+    &:hover
+      span
+        color:#fff
+        &:after
+          left:0
+    &:before
+      content:''
+      position:absolute
+      z-index:1
+    span
+      tn(.5s)
+      position:relative
+      z-index:1
+      border-radius:6px
+      margin-right:-2px
+      float:right
+      padding-top:3px
+      padding-left:20px
+      padding-right:20px
+      bb(24px)
+      text-align:center
+      display:block
+      color:#e5696b
+      height:28px
+      background-color:#fff
+      &:after
+        tn(.5s)
+        content:''
+        position:absolute
+        z-index:-1
+        left:100%
+        top:-5px
+        width:100%
+        height:calc(100% + 8px)
+        background-color:#e5696b

@@ -1,0 +1,56 @@
+[
+  {
+    "src": "./images/navigation-list/1.jpg",
+    "title": "Аи-92",
+    "description": "Уфанефтехим",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/2.jpg",
+    "title": "Аи-92",
+    "description": "ОАО «Уфимский НПЗ»",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/3.jpg",
+    "title": "Аи-92",
+    "description": "Сызранский НПЗ",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/4.jpg",
+    "title": "Аи-92",
+    "description": "Сургутский завод по стабилизации конденсата - филиал ООО «Газпром переработка»",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/5.jpg",
+    "title": "Аи-92",
+    "description": "Славнефть, ЯНОС",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/6.jpg",
+    "title": "Аи-92",
+    "description": "Рязанская нефтеперерабатывающая компания, ЗАО «РНПК»",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/7.jpg",
+    "title": "Аи-92",
+    "description": "Ново-Уфимский нефтеперерабатывающий завод, ОАО «Новойл»",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/8.jpg",
+    "title": "Аи-92",
+    "description": "Чебоксарская нефтебаза ООО «Татнефть АЗС-Центр»",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "src": "./images/navigation-list/9.jpg",
+    "title": "Аи-92",
+    "description": "ТАИФ (Нижнекамск)",
+    "certificate": "./download/certificate.pdf"
+  }
+]

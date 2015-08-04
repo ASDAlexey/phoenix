@@ -19,7 +19,6 @@ if(!Element.prototype.matches){
         Element.prototype.msMatchesSelector
 }
 if(!Element.prototype.closest){
-
     // реализуем
     Element.prototype.closest=function(css){
         var node=this;

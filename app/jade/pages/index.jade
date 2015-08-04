@@ -3,11 +3,65 @@ extends ../layout.jade
 block content
     section.map
         .info
-            .calc-block
-                h1.title Рассчитать заказ
+            .calc-block(ng-controller="FormCtrl")
+                h1.title
+                    span Рассчитать заказ
+                    span(ng-if="!isCalcForm" ng-click="back()")
+                form.form-validate(name="formValidate" ng-init="action='./controller.php'" novalidate ng-if="isCalcForm")
+                    div
+                        input#from(type="text" name="from" ng-model='dataForm.data.from' autocomplete="off" required)
+                        label(for="from") Откуда
+                    div
+                        input#to(type="text" name="to" ng-model='dataForm.data.to' autocomplete="off" required)
+                        label(for="to") Куда
+                    div
+                        input#type_of_product(type="text" name="type_of_product" ng-model='dataForm.data.type_of_product' autocomplete="off" required)
+                        label(for="type_of_product") Вид продукта
+                    .wrapper-send
+                    div
+                        input#quantity_tons(type="text" name="quantity_tons" ng-model='dataForm.data.quantity_tons' autocomplete="off" required only-int-numbers)
+                        label(for="quantity_tons") Количество тонн
+                    .wrapper-send
+                        button.send(ng-click='send(dataForm,formValidate,action)')
+                            span расчитать
+                    input(type="hidden" name="task" ng-init='dataForm.hidden.task="calculate_order"' ng-model='dataForm.hidden.task')
+                dl.result_order(ng-if="!isCalcForm")
+                    dt
+                        span Расстояние
+                    dd
+                        span 2079 км
+                    dt
+                        span Расчетное время в пути
+                    dd
+                        span 1дн 9ч 58мин
+                    dt
+                        span Количество тонн
+                    dd
+                        span 23
+                    dt
+                        span Тонн за рейс
+                    dd
+                        span 23.8 руб.
+                    dt
+                        span Цена с доставкой
+                    dd
+                        span 916 720 руб.
+        .header-map(ng-controller="GMapCtrl")
+            ui-gmap-google-map(center='{"latitude": 54.7281544,"longitude": 43.1882402}' zoom='6' options="options")
+                ui-gmap-marker(coords='{"latitude": 54.726,"longitude": 43.1882402}' options="marker.options" idkey="1" ng-init="marker.options.icon='images/baloons/2.png'")
+                ui-gmap-marker(coords='{"latitude": 53.2564653,"longitude": 37.6564841}' options="marker.options" idkey="2" ng-init="marker.options.icon='images/baloons/2.png'")
+                ui-gmap-marker(coords='{"latitude": 56.7600575,"longitude": 33.8414983}' options="marker.options" idkey="3" ng-init="marker.options.icon='images/baloons/2.png'")
+                ui-gmap-marker(coords='{"latitude": 51.66456585,"longitude": 44.8945049}' options="marker.options" idkey="4" ng-init="marker.options.icon='images/baloons/2.png'")
+                ui-gmap-marker(coords='{"latitude": 54.6150719,"longitude": 39.6932685}' options="marker.options" idkey="5" ng-init="marker.options.icon='images/baloons/2.png'")
     section.status
         .inner-status
             h1.title-default Статус доставки груза
+            form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
+                input(type="text" name="delivery_status" placeholder="Введите номер накладной" ng-model='dataForm.data.delivery_status' autocomplete="off" required)
+                span(ng-click="openPopup('ask_questions',{})") Где найти номер накладной
+                button.send(ng-click='send(dataForm,formValidate,action)')
+                    span Показать
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="delivery_status"' ng-model='dataForm.hidden.task')
     section.why-we
         h1.title-default Почему мы?
         ul
@@ -51,7 +105,7 @@ block content
             li Транспортные службы
             li Частные дома
         div.wrapper-link
-            a(href="")
+            a(href="" ng-click="openPopup('ask_questions',{})")
                 span Стань нашим партнером
     section.petroleum-products
         h1.title-default Продажа нефтепродуктов

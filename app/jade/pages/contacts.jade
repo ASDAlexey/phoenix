@@ -1,0 +1,22 @@
+//- index.jade
+extends ../layout.jade
+block content
+    section.list-contacts
+        each contact,index in contacts
+            li
+                if index!=2
+                    .wrapper-img
+                        // Если картинка будет no-photo.jpg, то тегу img поставить класс no-img
+                        img(src="#{contact.src}")
+                else
+                    .wrapper-img
+                        // Если картинка будет no-photo.jpg, то тегу img поставить класс no-img
+                        img.no-img(src="#{contact.src}")
+                .info
+                    h1 #{contact.name}
+                    ul
+                        li #{contact.position}
+                        li
+                            a(href="tel:#{contact.phone}") #{contact.phone}
+                        li
+                            a(href="mailto:#{contact.email}") #{contact.email}
