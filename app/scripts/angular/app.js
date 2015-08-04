@@ -1,4 +1,5 @@
 let app;
+import './preloader';
 import './map';
 import './animate';
 import './form';
@@ -8,6 +9,7 @@ app=angular.module("App",[
     'ui.mask',
     'validation.match',
     'uiGmapgoogle-maps',
+    'App.preloader',
     'App.map',
     'App.animate',
     'App.form',

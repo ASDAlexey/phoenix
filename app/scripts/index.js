@@ -7,6 +7,7 @@ import 'gsap';
 import 'gsap/src/uncompressed/utils/Draggable.js';
 import 'gsap/src/uncompressed/plugins/ScrollToPlugin.js';
 import './plugins/ThrowPropsPlugin.min.js';
+import './plugins/DrawSVGPlugin.min-modif.js'
 import 'lodash';
 import './plugins/angular-ui-utils/ui-utils.js';
 //require('imports-loader?this=>window!./vendors/preloadjs-0.6.1.min.js');

@@ -47,7 +47,7 @@ controller.controller("FormCtrl",[
         };
         $scope.thanksShowTime=function(){
             $rootScope.formIsValide=true;
-            return $timeout(function(){
+            $timeout(function(){
                 return $rootScope.hideThank();
             },2000);
         };

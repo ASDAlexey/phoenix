@@ -34,39 +34,6 @@ directive.directive('flipperX',[
     }
 ]);
 
-directive.directive('flip3d',[
-    "$timeout",function($timeout){
-        return {
-            restrict:"A",
-            link:function(scope,element,attrs){
-                return angular.element(document).ready(function(){
-                    var frontCard,tl;
-                    CSSPlugin.defaultTransformPerspective=1000;
-                    TweenMax.set($(element).find(".specs"),{
-                        rotationX:-90,
-                        transformOrigin:"0 0 0"
-                    });
-                    frontCard=$(element).find(".specs");
-                    tl=new TimelineMax({
-                        paused:true
-                    });
-                    tl.to(frontCard,.7,{
-                        rotationX:0,
-                        transformOrigin:"0 0 0",
-                        ease:Bounce.easeOut
-                    });
-                    $(element).on('mouseenter',function(){
-                        return tl.play();
-                    });
-                    return $(element).on('mouseleave',function(){
-                        return tl.reverse();
-                    });
-                });
-            }
-        };
-    }
-]);
-
 directive.directive('menuFlip3d',[
     "$timeout",function($timeout){
         return {
@@ -101,71 +68,97 @@ directive.directive('menuFlip3d',[
 ]);
 
 directive.directive('fadein3d',[
-    "$timeout","$window",function($timeout,$window){
+    "$timeout","$window","$document",function($timeout,$window,$document){
         return {
             restrict:"A",
             link:function(scope,element,attrs){
-                return angular.element(document).ready(function(){
-                    var animationParameters,tl;
-                    tl=new TimelineMax({
-                        paused:true
-                    });
-                    tl.staggerFrom($(element).find('>*'),0.8,{
-                        opacity:0,
-                        scale:0,
-                        y:80,
-                        rotationX:180,
-                        transformOrigin:"0% 50% -50",
-                        ease:Back.easeOut
-                    },0.1,"+=0");
-                    animationParameters=function(){
-                        var offsetTop,scrollTop,wh;
-                        offsetTop=$(element).closest('section,article').offset().top;
-                        scrollTop=$($window).scrollTop();
-                        wh=$($window).height();
-                        if((offsetTop-scrollTop)<=wh/2){
-                            return tl.play();
-                        }else{
-                            return tl.reverse();
-                        }
-                    };
-                    animationParameters();
-                    return $($window).scroll(function(){
-                        return animationParameters();
-                    });
+                var scrollBlock,wh,windowScroll,animationParameters,tl;
+                tl=new TimelineMax({
+                    paused:true
                 });
+                tl.staggerFrom(element[0].children,0.8,{
+                    opacity:0,
+                    scale:0,
+                    y:80,
+                    rotationX:180,
+                    transformOrigin:"0% 50% -50",
+                    ease:Back.easeOut
+                },0.1,"+=0");
+                windowScroll=function(){
+                    var offsetTop,scrollTop,wh;
+                    offsetTop=element[0].closest('section').offsetTop;
+                    scrollTop=($document[0].querySelector('body').scrollTop)?$document[0].querySelector('body'):$document[0].querySelector('html');
+                    wh=$window.innerHeight;
+                    if((offsetTop-scrollTop.scrollTop)<=wh/2){
+                        tl.play();
+                    }else{
+                        tl.reverse();
+                    }
+                };
+                windowScroll();
+                $window.addEventListener("scroll",windowScroll,false);
             }
         };
     }
 ]);
-
-directive.directive('rotateY',[
-    "$timeout","$window",function($timeout,$window){
+directive.directive('fadein3dfooter',[
+    "$timeout","$window","$document",function($timeout,$window,$document){
         return {
             restrict:"A",
-            scope:{
-                rotateY:"@"
-            },
             link:function(scope,element,attrs){
-                return angular.element(document).ready(function(){
-                    var tl;
-                    tl=new TimelineMax({
-                        paused:true
-                    });
-                    tl.to($(element),3,{
-                        rotationY:scope.rotateY,
-                        transformOrigin:"50% 50% 0",
-                        ease:Back.easeOut
-                    });
-                    $(element).on('mouseenter',function(){
-                        return $timeout(function(){
-                            return tl.play();
-                        },50);
-                    });
-                    return $(element).on('mouseleave',function(){
-                        return tl.reverse();
-                    });
+                var scrollBlock,wh,windowScroll,animationParameters,tl;
+                tl=new TimelineMax({
+                    paused:true
                 });
+                tl.staggerFrom(element[0].children,0.8,{
+                    opacity:0,
+                    scale:0,
+                    y:80,
+                    rotationX:180,
+                    transformOrigin:"0% 50% -50",
+                    ease:Back.easeOut
+                },0.1,"+=0");
+                windowScroll=function(){
+                    var offsetTop,scrollTop,wh,dh;
+                    offsetTop=element[0].closest('section,article,footer').offsetTop;
+                    scrollTop=($document[0].querySelector('body').scrollTop)?$document[0].querySelector('body'):$document[0].querySelector('html');
+                    if((offsetTop-scrollTop.scrollTop)<=105){
+                        tl.play();
+                    }else{
+                        tl.reverse();
+                    }
+                };
+                windowScroll();
+                $window.addEventListener("scroll",windowScroll,false);
+            }
+        };
+    }
+]);
+directive.directive('fadeinfly',[
+    "$timeout","$window","$document",function($timeout,$window,$document){
+        return {
+            restrict:"A",
+            link:function(scope,element,attrs){
+                var scrollBlock,wh,windowScroll,animationParameters,tl;
+                tl=new TimelineMax({
+                    paused:true
+                });
+                tl.staggerFrom(element[0].children,0.8,{
+                    opacity:0,scale:0,y:80,rotationX:180,transformOrigin:"0% 50% -50",ease:Linear.easeNone
+                },0.1,"+=0");
+                windowScroll=function(){
+                    var offsetTop,scrollTop,wh;
+                    offsetTop=element[0].closest('section').offsetTop;
+                    scrollTop=($document[0].querySelector('body').scrollTop)?$document[0].querySelector('body'):$document[0].querySelector('html');
+                    wh=$window.innerHeight;
+                    if((offsetTop-scrollTop.scrollTop)<=wh/2){
+                        tl.play();
+                    }else{
+                        tl.reverse();
+                    }
+                };
+                windowScroll();
+                $window.addEventListener("scroll",windowScroll,false);
             }
         };
     }

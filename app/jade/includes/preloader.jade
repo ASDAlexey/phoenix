@@ -1,0 +1,10 @@
+#container-preloader.svg-container-block(preloader='[".wrapper"]' animate-preloader)
+    .progress
+        .text#persent-loaded 0
+        progress-circle
+    .content
+        #boxContainer.svg-container
+            svg#boxLoader(width='70px', height='70px', viewbox='0 0 35 35', preserveaspectratio='none')
+                rect(x='0', fill='#a7e53b', width='35', height='35')
+            svg#base(width='210px', height='210px', viewbox='0 0 105 105', preserveaspectratio='none')
+                line(stroke-width='1.5', fill='none', stroke='#dedede', stroke-miterlimit='10', x1='0', y1='52.5', x2='105', y2='52.5')

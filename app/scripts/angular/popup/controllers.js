@@ -4,11 +4,25 @@ controller=angular.module("App.popup.controllers",[]);
 controller.controller("PopupCtrl",[
     "$scope","$rootScope","$timeout",function($scope,$rootScope,$timeout){
         $scope.openPopup=function(msg,data){
-            return $rootScope.$broadcast('popup',{
+            $rootScope.data=data;
+            if($rootScope.data.product){
+                $rootScope.data.product=angular.fromJson($rootScope.data.product);
+            }
+            $rootScope.$broadcast('popup',{
                 data:data,
                 msg:msg,
                 isOpened:true
             });
+        };
+        $scope.closePopup=function(msg,data){
+            $rootScope.$broadcast('popup',{
+                data:data,
+                msg:msg,
+                isOpened:false
+            });
+            $timeout(function(){
+                $rootScope.data={};
+            },1200);
         };
         $scope.animated=false;
         $scope.enterEffect=function(){

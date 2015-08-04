@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6d8aa11fc55ebdeb0509"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "628aaafccaef0e1f8c2e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -559,8 +559,6 @@
 	
 	__webpack_require__(5);
 	
-	__webpack_require__(5);
-	
 	__webpack_require__(7);
 	
 	__webpack_require__(8);
@@ -571,18 +569,20 @@
 	
 	__webpack_require__(12);
 	
-	__webpack_require__(14);
+	__webpack_require__(13);
+	
+	__webpack_require__(15);
 	
 	//require('imports-loader?this=>window!./vendors/preloadjs-0.6.1.min.js');
 	//require("imports-loader?this=>window,fix=>module.exports=0!./vendors/snap.svg.js")
 	
-	__webpack_require__(15);
-	
 	__webpack_require__(16);
 	
-	__webpack_require__(18);
+	__webpack_require__(17);
 	
 	__webpack_require__(19);
+	
+	__webpack_require__(20);
 
 /***/ },
 /* 1 */
@@ -41688,11 +41688,78 @@
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
+	
+	var _gsScope = "undefined" != typeof module && module.exports && "undefined" != typeof global ? global : undefined || window;
+	(_gsScope._gsQueue || (_gsScope._gsQueue = [])).push(function () {
+	    "use strict";
+	    function a(a, b, c, d) {
+	        return (c = parseFloat(c) - parseFloat(a), d = parseFloat(d) - parseFloat(b), Math.sqrt(c * c + d * d));
+	    }
+	
+	    function g(a) {
+	        return ("string" != typeof a && a.nodeType || (a = _gsScope.TweenLite.selector(a), a.length && (a = a[0])), a);
+	    }
+	
+	    function h(a, b, c) {
+	        var e,
+	            f,
+	            d = a.indexOf(" ");
+	        return (-1 === d ? (e = void 0 !== c ? c + "" : a, f = a) : (e = a.substr(0, d), f = a.substr(d + 1)), e = -1 !== e.indexOf("%") ? parseFloat(e) / 100 * b : parseFloat(e), f = -1 !== f.indexOf("%") ? parseFloat(f) / 100 * b : parseFloat(f), e > f ? [f, e] : [e, f]);
+	    }
+	
+	    function i(b) {
+	        if (!b) return 0;
+	        b = g(b);
+	        var d,
+	            e,
+	            f,
+	            h,
+	            i,
+	            j,
+	            k,
+	            l,
+	            c = b.tagName.toLowerCase();
+	        if ("path" === c) d = b.getTotalLength() || 0;else if ("rect" === c) e = b.getBBox(), d = 2 * (e.width + e.height);else if ("circle" === c) d = 2 * Math.PI * parseFloat(b.getAttribute("r"));else if ("line" === c) d = a(b.getAttribute("x1"), b.getAttribute("y1"), b.getAttribute("x2"), b.getAttribute("y2"));else if ("polyline" === c || "polygon" === c) for (f = b.getAttribute("points").split(" "), d = 0, i = f[0].split(","), "polygon" === c && (f.push(f[0]), -1 === f[0].indexOf(",") && f.push(f[1])), j = 1; j < f.length; j++) h = f[j].split(","), 1 === h.length && (h[1] = f[j++]), 2 === h.length && (d += a(i[0], i[1], h[0], h[1]) || 0, i = h);else "ellipse" === c && (k = parseFloat(b.getAttribute("rx")), l = parseFloat(b.getAttribute("ry")), d = Math.PI * (3 * (k + l) - Math.sqrt((3 * k + l) * (k + 3 * l))));
+	        return d || 0;
+	    }
+	
+	    function l(a, b) {
+	        if (!a) return [0, 0];
+	        a = g(a), b = b || i(a) + 1;
+	        var c = j(a),
+	            d = c.strokeDasharray || "",
+	            e = parseFloat(c.strokeDashoffset);
+	        return (d = -1 === d.indexOf(" ") ? b : parseFloat(d.split(" ")[0]) || 1e-5, d > b && (d = b), [Math.max(0, -e), d - e]);
+	    }
+	    var k, j;
+	    var f = 1;
+	    j = document.defaultView ? document.defaultView.getComputedStyle : function () {};
+	    k = _gsScope._gsDefine.plugin({
+	        propName: "drawSVG", API: 2, version: "0.0.4", global: !0, overwriteProps: ["drawSVG"], init: function init(a, g) {
+	            if (!a.getBBox) return !1;
+	            //if(!f)return window.location.href="http://"+d+e+"?plugin="+c+"&source="+b, !1;
+	            var m,
+	                n,
+	                o,
+	                k = i(a) + 1;
+	            return (this._style = a.style, g === !0 || "true" === g ? g = "0 100%" : g ? -1 === (g + "").indexOf(" ") && (g = "0 " + g) : g = "0 0", m = l(a, k), n = h(g, k, m[0]), this._length = k + 10, 0 === m[0] && 0 === n[0] ? (o = Math.max(1e-5, n[1] - k), this._dash = k + o, this._offset = k - m[1] + o, this._addTween(this, "_offset", this._offset, k - n[1] + o, "drawSVG")) : (this._dash = m[1] - m[0] || 1e-6, this._offset = -m[0], this._addTween(this, "_dash", this._dash, n[1] - n[0] || 1e-5, "drawSVG"), this._addTween(this, "_offset", this._offset, -n[0], "drawSVG")), f);
+	        }, set: function set(a) {
+	            this._firstPT && (this._super.setRatio.call(this, a), this._style.strokeDashoffset = this._offset, this._style.strokeDasharray = this._dash + " " + this._length);
+	        }
+	    }), k.getLength = i, k.getPosition = l;
+	}), _gsScope._gsDefine && _gsScope._gsQueue.pop()();
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
 	 * @license
-	 * lodash 3.10.0 (Custom Build) <https://lodash.com/>
+	 * lodash 3.10.1 (Custom Build) <https://lodash.com/>
 	 * Build: `lodash modern -d -o ./index.js`
 	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
 	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -41705,7 +41772,7 @@
 	  var undefined;
 	
 	  /** Used as the semantic version number. */
-	  var VERSION = '3.10.0';
+	  var VERSION = '3.10.1';
 	
 	  /** Used to compose bitmasks for wrapper metadata. */
 	  var BIND_FLAG = 1,
@@ -54042,10 +54109,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)(module), (function() { return this; }())))
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -54061,7 +54128,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/**
@@ -56464,7 +56531,7 @@
 	angular.module('ui.utils', ['ui.event', 'ui.format', 'ui.highlight', 'ui.include', 'ui.indeterminate', 'ui.inflector', 'ui.jq', 'ui.keypress', 'ui.mask', 'ui.reset', 'ui.route', 'ui.scrollfix', 'ui.scroll', 'ui.scroll.jqlite', 'ui.showhide', 'ui.unique', 'ui.validate']);
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/*!
@@ -56477,15 +56544,15 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(17);
+	__webpack_require__(18);
 	module.exports = 'ngAnimate';
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -60212,7 +60279,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	/*! angular-google-maps 2.1.5 2015-06-18
@@ -74777,22 +74844,24 @@
 	}( window,angular));
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(20);
-	
-	__webpack_require__(22);
+	__webpack_require__(21);
 	
 	__webpack_require__(24);
 	
-	__webpack_require__(29);
+	__webpack_require__(26);
+	
+	__webpack_require__(28);
+	
+	__webpack_require__(33);
 	
 	var app = undefined;
 	
-	app = angular.module("App", ['ngAnimate', 'ui.mask', 'validation.match', 'uiGmapgoogle-maps', 'App.map', 'App.animate', 'App.form', 'App.popup']);
+	app = angular.module("App", ['ngAnimate', 'ui.mask', 'validation.match', 'uiGmapgoogle-maps', 'App.preloader', 'App.map', 'App.animate', 'App.form', 'App.popup']);
 	app.run(function ($timeout, $rootScope) {
 	    $timeout(function () {
 	        $rootScope.load = true;
@@ -74801,17 +74870,264 @@
 	angular.bootstrap(document.getElementsByTagName("html"), ["App"]);
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(21);
+	__webpack_require__(22);
+	
+	angular.module('App.preloader', ["App.preloader.directives"]);
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _templatesProgressCircleJade = __webpack_require__(23);
+	
+	var _templatesProgressCircleJade2 = _interopRequireDefault(_templatesProgressCircleJade);
+	
+	var directive = undefined;
+	directive = angular.module('App.preloader.directives', []);
+	directive.directive('preloader', ["$timeout", "$window", "$rootScope", "$document", function ($timeout, $window, $rootScope, $document) {
+	    return {
+	        restrict: "A",
+	        scope: {
+	            preloader: "="
+	        },
+	        link: function link(scope, element, attrs) {
+	            var allElements, handleComplete, handleProgress, hidePreloader, isUnique, manifest, persent, persentLast, preload, searchContainers, time;
+	            $rootScope.persentLoaded = 0;
+	            manifest = [];
+	            isUnique = function (el, array) {
+	                var isFound;
+	                if (!array.length) {
+	                    return true;
+	                }
+	                isFound = 0;
+	                array.forEach(function (value, index) {
+	                    if (value && el === value.src) {
+	                        return isFound = 1;
+	                    }
+	                });
+	                if (isFound) {
+	                    return false;
+	                } else {
+	                    return true;
+	                }
+	            };
+	            searchContainers = scope.preloader;
+	            allElements = $document[0].querySelectorAll("body " + searchContainers[0] + " *");
+	            angular.forEach(allElements, function (value, index) {
+	                var newSrc, url, urlString;
+	                urlString = $window.getComputedStyle(value).getPropertyValue('background-image');
+	                if (urlString !== "none") {
+	                    if (urlString.indexOf('url') + 1) {
+	                        url = urlString;
+	                        url = url.replace(/url\(\"/g, "");
+	                        url = url.replace(/url\(/g, "");
+	                        url = url.replace(/\"\)/g, "");
+	                        url = url.replace(/\)/g, "");
+	                    }
+	                } else {
+	                    if (typeof angular.element(value).attr("src") !== "undefined" && value.nodeName.toLowerCase() === "img") {
+	                        url = angular.element(value).attr("src");
+	                    }
+	                }
+	                if (url && isUnique(url, manifest)) {
+	                    newSrc = {};
+	                    newSrc.src = url;
+	                    return manifest.push(newSrc);
+	                }
+	            });
+	            persentLast = 0;
+	            persent = 0;
+	            if ($document[0].documentElement.classList.contains('ua-ie')) {
+	                time = 2000;
+	            } else {
+	                time = 1000;
+	            }
+	            $timeout(function () {
+	                return $document[0].documentElement.style.opacity = 1;
+	            }, time);
+	            handleProgress = function (event) {
+	                if (persent) {
+	                    persentLast = persent;
+	                }
+	                persent = parseInt(event.loaded * 100);
+	                $rootScope.$broadcast('preloader:progress', {
+	                    persent: persent
+	                });
+	                return $timeout(function () {
+	                    return TweenLite.to({
+	                        d: persentLast
+	                    }, .5, {
+	                        d: persent,
+	                        roundProps: 'd',
+	                        ease: Linear.easeNone,
+	                        onUpdate: function onUpdate() {
+	                            return $document[0].getElementById("persent-loaded").innerHTML = this.target.d;
+	                        }
+	                    });
+	                }, 500);
+	            };
+	            hidePreloader = function () {
+	                angular.element($document[0].querySelector('.svg-container-block')).addClass('page-is-loaded');
+	                return $timeout(function () {
+	                    return angular.element($document[0].querySelector('.svg-container-block')).remove();
+	                }, 1200);
+	            };
+	            handleComplete = function (event) {
+	                $timeout(function () {
+	                    return TweenLite.to({
+	                        d: persentLast
+	                    }, .5, {
+	                        d: 100,
+	                        roundProps: 'd',
+	                        ease: Linear.easeNone,
+	                        onUpdate: function onUpdate() {
+	                            return $document[0].getElementById("persent-loaded").innerHTML = this.target.d;
+	                        }
+	                    });
+	                }, 500);
+	                $rootScope.$broadcast('preloader:progress', {
+	                    persent: 100
+	                });
+	                return $timeout(function () {
+	                    $rootScope.$broadcast('preloader:loaded', {
+	                        loaded: true
+	                    });
+	                    return hidePreloader();
+	                }, 1000);
+	            };
+	            preload = new createjs.LoadQueue(true);
+	            preload.on("progress", handleProgress);
+	            preload.on("complete", handleComplete);
+	            return preload.loadManifest(manifest, true);
+	        }
+	    };
+	}]);
+	directive.directive('animatePreloader', ["$timeout", "$window", function ($timeout, $window) {
+	    return {
+	        restrict: "A",
+	        link: function link(scope, element, attrs) {
+	            var base, box, boxContainer, boxLoader, tl;
+	            boxLoader = document.getElementById('boxLoader');
+	            boxContainer = document.getElementById('boxContainer');
+	            box = document.getElementById('box');
+	            base = document.getElementById('base');
+	            document.getElementById('boxContainer').style.opacity = 1;
+	            TweenMax.set([boxLoader, base], {
+	                position: 'absolute',
+	                top: '50%',
+	                left: '50%',
+	                xPercent: -50,
+	                yPercent: -50
+	            });
+	            TweenMax.set([boxContainer], {
+	                position: 'absolute',
+	                top: '50%',
+	                left: '50%',
+	                xPercent: -50,
+	                yPercent: -50
+	            });
+	            tl = new TimelineMax({
+	                repeat: -1
+	            });
+	            tl.timeScale(1.2);
+	            tl.set(boxLoader, {
+	                transformOrigin: '0% 100%',
+	                left: '+=70',
+	                top: '-=' + 70 / 2
+	            }).to(boxLoader, 1, {
+	                rotation: '-=90',
+	                ease: Power4.easeInOut
+	            }).set(boxLoader, {
+	                transformOrigin: '0% 100%',
+	                left: '-=70',
+	                rotation: 0
+	            }).to(boxLoader, 1, {
+	                rotation: '-=90',
+	                ease: Power4.easeInOut
+	            }).set(boxLoader, {
+	                transformOrigin: '0% 100%',
+	                left: '-=70',
+	                rotation: 0
+	            }).to(boxLoader, 1, {
+	                rotation: '-=270',
+	                ease: Power4.easeInOut
+	            }).to(boxContainer, 1, {
+	                rotation: '+=180',
+	                ease: Back.easeInOut
+	            }, '-=1').set(boxLoader, {
+	                transformOrigin: '100% 0%',
+	                top: '+=70',
+	                rotation: 0
+	            }).to(boxLoader, 1, {
+	                rotation: '-=90',
+	                ease: Power4.easeInOut
+	            }).set(boxLoader, {
+	                transformOrigin: '100% 0%',
+	                left: '+=70',
+	                rotation: 0
+	            }).to(boxLoader, 1, {
+	                rotation: '-=90',
+	                ease: Power4.easeInOut
+	            }).set(boxLoader, {
+	                transformOrigin: '100% 0%',
+	                left: '+=70',
+	                rotation: 0
+	            }).to(boxLoader, 1, {
+	                rotation: '-=270',
+	                ease: Power4.easeInOut
+	            }).to(boxContainer, 1, {
+	                rotation: '+=180',
+	                ease: Back.easeInOut
+	            }, '-=1');
+	        }
+	    };
+	}]);
+	directive.directive('progressCircle', ["$timeout", "$window", function ($timeout, $window) {
+	    return {
+	        restrict: "E",
+	        replace: true,
+	        template: _templatesProgressCircleJade2['default'],
+	        link: function link(scope, element, attrs) {
+	            console.log(element[0].querySelector('.circle'));
+	            TweenMax.set(element[0].querySelector('.circle'), {
+	                drawSVG: '0% 0%'
+	            });
+	            scope.$on('preloader:progress', function (event, data) {
+	                return TweenMax.to(element[0].querySelector('.circle'), .7, {
+	                    drawSVG: data.persent + "%"
+	                });
+	            });
+	        }
+	    };
+	}]);
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "<svg version=\"1.1\" baseprofile=\"tiny\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" viewbox=\"0 0 500 500\" xml:space=\"preserve\"><circle fill=\"none\" cx=\"250\" cy=\"250\" r=\"235\" stroke=\"#ccc\" stroke-width=\"10\" class=\"circle-black\"></circle><circle fill=\"none\" cx=\"250\" cy=\"250\" r=\"235\" stroke=\"#a7e53b\" stroke-width=\"11\" class=\"circle\"></circle></svg>"
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	__webpack_require__(25);
 	
 	angular.module("App.map", ["App.map.controllers"]);
 
 /***/ },
-/* 21 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74831,17 +75147,17 @@
 	}]);
 
 /***/ },
-/* 22 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(23);
+	__webpack_require__(27);
 	
 	angular.module('App.animate', ['App.animate.directives']);
 
 /***/ },
-/* 23 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74867,37 +75183,6 @@
 	                }).to(backCard, .7, {
 	                    rotationY: 0
 	                }, 0);
-	                $(element).on('mouseenter', function () {
-	                    return tl.play();
-	                });
-	                return $(element).on('mouseleave', function () {
-	                    return tl.reverse();
-	                });
-	            });
-	        }
-	    };
-	}]);
-	
-	directive.directive('flip3d', ["$timeout", function ($timeout) {
-	    return {
-	        restrict: "A",
-	        link: function link(scope, element, attrs) {
-	            return angular.element(document).ready(function () {
-	                var frontCard, tl;
-	                CSSPlugin.defaultTransformPerspective = 1000;
-	                TweenMax.set($(element).find(".specs"), {
-	                    rotationX: -90,
-	                    transformOrigin: "0 0 0"
-	                });
-	                frontCard = $(element).find(".specs");
-	                tl = new TimelineMax({
-	                    paused: true
-	                });
-	                tl.to(frontCard, .7, {
-	                    rotationX: 0,
-	                    transformOrigin: "0 0 0",
-	                    ease: Bounce.easeOut
-	                });
 	                $(element).on('mouseenter', function () {
 	                    return tl.play();
 	                });
@@ -74940,69 +75225,93 @@
 	    };
 	}]);
 	
-	directive.directive('fadein3d', ["$timeout", "$window", function ($timeout, $window) {
+	directive.directive('fadein3d', ["$timeout", "$window", "$document", function ($timeout, $window, $document) {
 	    return {
 	        restrict: "A",
 	        link: function link(scope, element, attrs) {
-	            return angular.element(document).ready(function () {
-	                var animationParameters, tl;
-	                tl = new TimelineMax({
-	                    paused: true
-	                });
-	                tl.staggerFrom($(element).find('>*'), 0.8, {
-	                    opacity: 0,
-	                    scale: 0,
-	                    y: 80,
-	                    rotationX: 180,
-	                    transformOrigin: "0% 50% -50",
-	                    ease: Back.easeOut
-	                }, 0.1, "+=0");
-	                animationParameters = function () {
-	                    var offsetTop, scrollTop, wh;
-	                    offsetTop = $(element).closest('section,article').offset().top;
-	                    scrollTop = $($window).scrollTop();
-	                    wh = $($window).height();
-	                    if (offsetTop - scrollTop <= wh / 2) {
-	                        return tl.play();
-	                    } else {
-	                        return tl.reverse();
-	                    }
-	                };
-	                animationParameters();
-	                return $($window).scroll(function () {
-	                    return animationParameters();
-	                });
+	            var scrollBlock, wh, windowScroll, animationParameters, tl;
+	            tl = new TimelineMax({
+	                paused: true
 	            });
+	            tl.staggerFrom(element[0].children, 0.8, {
+	                opacity: 0,
+	                scale: 0,
+	                y: 80,
+	                rotationX: 180,
+	                transformOrigin: "0% 50% -50",
+	                ease: Back.easeOut
+	            }, 0.1, "+=0");
+	            windowScroll = function () {
+	                var offsetTop, scrollTop, wh;
+	                offsetTop = element[0].closest('section').offsetTop;
+	                scrollTop = $document[0].querySelector('body').scrollTop ? $document[0].querySelector('body') : $document[0].querySelector('html');
+	                wh = $window.innerHeight;
+	                if (offsetTop - scrollTop.scrollTop <= wh / 2) {
+	                    tl.play();
+	                } else {
+	                    tl.reverse();
+	                }
+	            };
+	            windowScroll();
+	            $window.addEventListener("scroll", windowScroll, false);
 	        }
 	    };
 	}]);
-	
-	directive.directive('rotateY', ["$timeout", "$window", function ($timeout, $window) {
+	directive.directive('fadein3dfooter', ["$timeout", "$window", "$document", function ($timeout, $window, $document) {
 	    return {
 	        restrict: "A",
-	        scope: {
-	            rotateY: "@"
-	        },
 	        link: function link(scope, element, attrs) {
-	            return angular.element(document).ready(function () {
-	                var tl;
-	                tl = new TimelineMax({
-	                    paused: true
-	                });
-	                tl.to($(element), 3, {
-	                    rotationY: scope.rotateY,
-	                    transformOrigin: "50% 50% 0",
-	                    ease: Back.easeOut
-	                });
-	                $(element).on('mouseenter', function () {
-	                    return $timeout(function () {
-	                        return tl.play();
-	                    }, 50);
-	                });
-	                return $(element).on('mouseleave', function () {
-	                    return tl.reverse();
-	                });
+	            var scrollBlock, wh, windowScroll, animationParameters, tl;
+	            tl = new TimelineMax({
+	                paused: true
 	            });
+	            tl.staggerFrom(element[0].children, 0.8, {
+	                opacity: 0,
+	                scale: 0,
+	                y: 80,
+	                rotationX: 180,
+	                transformOrigin: "0% 50% -50",
+	                ease: Back.easeOut
+	            }, 0.1, "+=0");
+	            windowScroll = function () {
+	                var offsetTop, scrollTop, wh, dh;
+	                offsetTop = element[0].closest('section,article,footer').offsetTop;
+	                scrollTop = $document[0].querySelector('body').scrollTop ? $document[0].querySelector('body') : $document[0].querySelector('html');
+	                if (offsetTop - scrollTop.scrollTop <= 105) {
+	                    tl.play();
+	                } else {
+	                    tl.reverse();
+	                }
+	            };
+	            windowScroll();
+	            $window.addEventListener("scroll", windowScroll, false);
+	        }
+	    };
+	}]);
+	directive.directive('fadeinfly', ["$timeout", "$window", "$document", function ($timeout, $window, $document) {
+	    return {
+	        restrict: "A",
+	        link: function link(scope, element, attrs) {
+	            var scrollBlock, wh, windowScroll, animationParameters, tl;
+	            tl = new TimelineMax({
+	                paused: true
+	            });
+	            tl.staggerFrom(element[0].children, 0.8, {
+	                opacity: 0, scale: 0, y: 80, rotationX: 180, transformOrigin: "0% 50% -50", ease: Linear.easeNone
+	            }, 0.1, "+=0");
+	            windowScroll = function () {
+	                var offsetTop, scrollTop, wh;
+	                offsetTop = element[0].closest('section').offsetTop;
+	                scrollTop = $document[0].querySelector('body').scrollTop ? $document[0].querySelector('body') : $document[0].querySelector('html');
+	                wh = $window.innerHeight;
+	                if (offsetTop - scrollTop.scrollTop <= wh / 2) {
+	                    tl.play();
+	                } else {
+	                    tl.reverse();
+	                }
+	            };
+	            windowScroll();
+	            $window.addEventListener("scroll", windowScroll, false);
 	        }
 	    };
 	}]);
@@ -75035,23 +75344,23 @@
 	}]);
 
 /***/ },
-/* 24 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(25);
+	__webpack_require__(29);
 	
-	__webpack_require__(26);
+	__webpack_require__(30);
 	
-	__webpack_require__(27);
+	__webpack_require__(31);
 	
-	__webpack_require__(28);
+	__webpack_require__(32);
 	
 	angular.module('App.form', ["App.form.controllers", "App.form.filters", "App.form.services", "App.form.directives"]);
 
 /***/ },
-/* 25 */
+/* 29 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75102,7 +75411,7 @@
 	    };
 	    $scope.thanksShowTime = function () {
 	        $rootScope.formIsValide = true;
-	        return $timeout(function () {
+	        $timeout(function () {
 	            return $rootScope.hideThank();
 	        }, 2000);
 	    };
@@ -75119,7 +75428,7 @@
 	}]);
 
 /***/ },
-/* 26 */
+/* 30 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75156,7 +75465,7 @@
 	});
 
 /***/ },
-/* 27 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75176,7 +75485,7 @@
 	});
 
 /***/ },
-/* 28 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75201,39 +75510,67 @@
 	}]);
 
 /***/ },
-/* 29 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	__webpack_require__(30);
+	__webpack_require__(34);
 	
-	__webpack_require__(31);
+	__webpack_require__(35);
 	
 	angular.module('App.popup', ["App.popup.controllers", "App.popup.directives"]);
 
 /***/ },
-/* 30 */
+/* 34 */
 /***/ function(module, exports) {
 
 	'use strict';
 	var controller;
 	controller = angular.module("App.popup.controllers", []);
-	controller.controller("PopupCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
+	controller.controller("PopupCtrl", ["$scope", "$rootScope", "$timeout", function ($scope, $rootScope, $timeout) {
 	    $scope.openPopup = function (msg, data) {
-	        return $rootScope.$broadcast('popup', {
+	        $rootScope.data = data;
+	        if ($rootScope.data.product) {
+	            $rootScope.data.product = angular.fromJson($rootScope.data.product);
+	        }
+	        $rootScope.$broadcast('popup', {
 	            data: data,
 	            msg: msg,
 	            isOpened: true
 	        });
 	    };
+	    $scope.closePopup = function (msg, data) {
+	        $rootScope.$broadcast('popup', {
+	            data: data,
+	            msg: msg,
+	            isOpened: false
+	        });
+	        $timeout(function () {
+	            $rootScope.data = {};
+	        }, 1200);
+	    };
+	    $scope.animated = false;
+	    $scope.enterEffect = function () {
+	        $scope.animated = true;
+	    };
+	    $scope.leaveEffect = function () {
+	        $scope.animated = false;
+	    };
 	}]);
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _templatesPopupSvgJade = __webpack_require__(36);
+	
+	var _templatesPopupSvgJade2 = _interopRequireDefault(_templatesPopupSvgJade);
+	
 	var directive;
 	directive = angular.module('App.popup.directives', []);
 	directive.directive('rotate', ["$timeout", function ($timeout) {
@@ -75265,85 +75602,76 @@
 	        restrict: 'E',
 	        replace: true,
 	        transclude: true,
-	        template: __webpack_require__(32),
-	        controller: ["$scope", "$rootScope", function ($scope, $rootScope) {
-	            return $scope.closePopup = function (msg, data) {
-	                return $rootScope.$broadcast('popup', {
-	                    data: data,
-	                    msg: msg,
-	                    isOpened: false
-	                });
-	            };
-	        }],
+	        template: _templatesPopupSvgJade2['default'],
 	        scope: {
 	            name: "@"
 	        },
 	        link: function link(scope, element, attrs) {
-	            //return angular.element(document).ready(function(){
-	            //    var closeOverlay,openOverlay,overlay,path,pathConfig,s,tl;
-	            //    element[0].classList.remove('hide-block');
-	            //    scope.$on('popup',function(event,response){
-	            //        if(response.isOpened){
-	            //            if(response.msg===scope.name){
-	            //                return openOverlay();
-	            //            }
-	            //        }else if(!response.isOpened){
-	            //            return closeOverlay();
-	            //        }
-	            //    });
-	            //    overlay=element[0];
-	            //    tl={};
-	            //    tl[scope.name]=new TimelineMax({
-	            //        paused:true
-	            //    });
-	            //    $timeout((function(){
-	            //        var choise;
-	            //        choise=_.union(element[0].getElementsByClassName('inner-popup'),element[0].getElementsByClassName('overlay-close'),element[0].getElementsByClassName('logo'));
-	            //        return tl[scope.name].staggerFrom(choise,0.7,{
-	            //            opacity:0,
-	            //            scale:0,
-	            //            y:80,
-	            //            rotationX:180,
-	            //            transformOrigin:'0% 50% -50',
-	            //            ease:Back.easeOut
-	            //        },0.1,'+=0');
-	            //    }),100);
-	            //    openOverlay=function(){
-	            //        overlay.classList.add('open');
-	            //        path.animate({
-	            //            'path':pathConfig.to
-	            //        },800,mina.easeout);
-	            //        return $timeout((function(){
-	            //            return tl[scope.name].play();
-	            //        }),800);
-	            //    };
-	            //    closeOverlay=function(){
-	            //        tl[scope.name].reverse();
-	            //        return $timeout((function(){
-	            //            path.animate({
-	            //                'path':pathConfig.from
-	            //            },500,mina.easeout);
-	            //            return $timeout((function(){
-	            //                return overlay.classList.remove('open');
-	            //            }),500);
-	            //        }),500);
-	            //    };
-	            //    s=Snap(overlay.querySelector('svg'));
-	            //    path=s.select('path');
-	            //    return pathConfig={
-	            //        from:path.attr('d'),
-	            //        to:overlay.getAttribute('data-path-to')
-	            //    };
-	            //});
+	            return angular.element(document).ready(function () {
+	                var closeOverlay, openOverlay, overlay, path, pathConfig, s, tl;
+	                element[0].classList.remove('hide-block');
+	                scope.$on('popup', function (event, response) {
+	                    if (response.isOpened) {
+	                        if (response.msg === scope.name) {
+	                            return openOverlay();
+	                        }
+	                    } else if (!response.isOpened) {
+	                        return closeOverlay();
+	                    }
+	                });
+	                overlay = element[0];
+	                tl = {};
+	                tl[scope.name] = new TimelineMax({
+	                    paused: true
+	                });
+	                $timeout(function () {
+	                    var choise;
+	                    choise = _.union(element[0].getElementsByClassName('inner-popup'), element[0].getElementsByClassName('overlay-close'), element[0].getElementsByClassName('logo'));
+	                    return tl[scope.name].staggerFrom(choise, 0.7, {
+	                        opacity: 0,
+	                        scale: 0,
+	                        y: 80,
+	                        rotationX: 180,
+	                        transformOrigin: '0% 50% -50',
+	                        ease: Back.easeOut
+	                    }, 0.1, '+=0');
+	                }, 100);
+	                openOverlay = function () {
+	                    overlay.classList.add('open');
+	                    path.animate({
+	                        'path': pathConfig.to
+	                    }, 800, mina.easeout);
+	                    return $timeout(function () {
+	                        return tl[scope.name].play();
+	                    }, 800);
+	                };
+	                closeOverlay = function () {
+	                    tl[scope.name].reverse();
+	                    return $timeout(function () {
+	                        path.animate({
+	                            'path': pathConfig.from
+	                        }, 500, mina.easeout);
+	                        return $timeout(function () {
+	                            return overlay.classList.remove('open');
+	                        }, 500);
+	                    }, 500);
+	                };
+	                s = Snap(overlay.querySelector('svg'));
+	                path = s.select('path');
+	                return pathConfig = {
+	                    from: path.attr('d'),
+	                    to: overlay.getAttribute('data-path-to')
+	                };
+	            });
 	        }
 	    };
 	}]);
 
 /***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "\"use strict\";<!--.overlay.overlay-cornershape(data-path-to='M 0,0 c 0,0 63.5,-16.5 80,0 16.5,16.5 0,60 0,60 L 0,60 Z')--><!--    svg(xmlns='http://www.w3.org/2000/svg' width='100%', height='100%' viewBox=\"0 0 80 60\" preserveaspectratio='none')--><!--        path.overlay-path(d='M 0,0 c 0,0 -16.5,43.5 0,60 16.5,16.5 80,0 80,0 L 0,60 Z')--><!--    .popup-bg-img(ng-if=\"name=='enter'\")--><!--    button.overlay-close(rotate ng-click=\"closePopup('',{})\")--><!--        span--><!--    div.inner-popup(ng-transclude)-->"
+	module.exports = "<div data-path-to=\"M 0,0 c 0,0 63.5,-16.5 80,0 16.5,16.5 0,60 0,60 L 0,60 Z\" class=\"overlay overlay-cornershape\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100%\" height=\"100%\" viewBox=\"0 0 80 60\" preserveaspectratio=\"none\"><path d=\"M 0,0 c 0,0 -16.5,43.5 0,60 16.5,16.5 80,0 80,0 L 0,60 Z\" class=\"overlay-path\"></path></svg><div ng-if=\"name=='enter'\" class=\"popup-bg-img\"></div><div ng-transclude=\"ng-transclude\" class=\"inner-popup\"></div></div>"
 
 /***/ }
 /******/ ]);

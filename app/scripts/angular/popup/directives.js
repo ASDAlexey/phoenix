@@ -1,4 +1,5 @@
 'use strict';
+import popup_svg from './templates/popup-svg.jade';
 var directive;
 directive=angular.module('App.popup.directives',[]);
 directive.directive('rotate',[
@@ -27,38 +28,13 @@ directive.directive('rotate',[
         };
     }
 ]);
-//console.log('sss');
-console.log(require("./templates/popup-svg.html"));
-//console.log(require('./templates/popup-svg.jade'));
 directive.directive('popupSvg',[
     '$timeout',function($timeout){
         return {
             restrict:'E',
             replace:true,
             transclude:true,
-            //template:require('./templates/popup-svg.jade'),
-            //template:`<div data-path-to="M 0,0 c 0,0 63.5,-16.5 80,0 16.5,16.5 0,60 0,60 L 0,60 Z" class="overlay overlay-cornershape">
-            //                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60"
-            //                         preserveaspectratio="none">
-            //                        <path d="M 0,0 c 0,0 -16.5,43.5 0,60 16.5,16.5 80,0 80,0 L 0,60 Z" class="overlay-path"></path>
-            //                    </svg>
-            //                    <div ng-if="name=='enter'" class="popup-bg-img"></div>
-            //                    <button rotate="rotate" ng-click="closePopup('',{})" class="overlay-close">
-            //                        <span></span>
-            //                    </button>
-            //                    <div ng-transclude="ng-transclude" class="inner-popup"></div>
-            //                </div>`,
-            controller:[
-                "$scope","$rootScope",function($scope,$rootScope){
-                    return $scope.closePopup=function(msg,data){
-                        return $rootScope.$broadcast('popup',{
-                            data:data,
-                            msg:msg,
-                            isOpened:false
-                        });
-                    };
-                }
-            ],
+            template:popup_svg,
             scope:{
                 name:"@"
             },

@@ -1,5 +1,5 @@
 /* Overlay style */
-$color=rgba(#fff, .7)
+$color=rgba(#363a3e, 1)
 .overlay
   position:fixed
   width:100%
@@ -10,13 +10,12 @@ $color=rgba(#fff, .7)
   background:$color
   .slider-form
     background:none
-/* Overlay closing cross */
 .overlay .overlay-close
-  width:80px
-  height:80px
+  width:20px
+  height:20px
   position:absolute
-  right:20px
-  top:20px
+  right:-5px
+  top:10px
   overflow:hidden
   border:none
   color:transparent
@@ -24,36 +23,17 @@ $color=rgba(#fff, .7)
   z-index:100
   span
     dibt()
-    sprite($cross)
+    sprite($close_popup)
 .overlay .inner-popup
   margin:0 auto
-  width:932px
+  width:282px
   text-align:center
   position:relative
+  right:-110px
   top:50%
   max-height:80%
   z-index:5
   transform:translateY(-50%)
-  .slider-form
-    float:none
-    margin:0 auto
-  .content &
-    overflow:hidden
-  .wrapper-button
-    width:auto !important
-  .title
-    lh(50px)
-    text-transform:uppercase
-    color:#fff
-  .choise
-    color:#e7512a
-    lb(24px)
-    margin:18px 0 76px
-  .inf
-    color:#fdfeff
-    lr(13px)
-    margin:17px 0 37px
-/* Effects */
 .overlay-cornershape
   background:transparent
   visibility:hidden
@@ -69,20 +49,6 @@ $color=rgba(#fff, .7)
   left:0
 .open .popup-bg-img
   opacity:1
-.popup-bg-img
-  opacity:0
-  tn(1s)
-  transition-delay:0.8s;
-  position:absolute
-  z-index:2
-  left:0
-  top:0
-  width:100%
-  height:100%
-  background-image:url(../images/bg/enter.jpg)
-  background-repeat:no-repeat
-  background-position:center top
-  background-size cover
 .overlay-cornershape .overlay-path
   fill:$color
 .overlay-cornershape.close nav,

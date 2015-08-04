@@ -39,19 +39,12 @@ module.exports={
     module:{
         loaders:[
             {test:/\.html$/,loader:'raw',exclude:/node_modules/},
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel?optional[]=runtime&stage=0'
-            },
             {test:/\.jade$/,loader:'raw!jade-html',exclude:/node_modules/},
-            //{test:/\.css$/,loader:'style!css',exclude:/node_modules/},
-            //{test:/\.styl$/,loader:'style!css!stylus',exclude:/node_modules/},
-            //{test:/\.coffee$/,loader:"coffee-loader"},
-            //{test:/.*\/app\/.*\.js$/,loader:"uglify"},
-            //{test:/.*\/app\/.*\.ts$/,loader:"awesome-typescript-loader"},
-            {test:path.join(__dirname,'app/scripts'),loader:'babel-loader'}
-            //{test:/[\\\/]vendors[\\\/]modernizr[\\\/]modernizr\.js$/,loader:"imports?this=>window!exports?window.Modernizr"}
+            {test:/\.css$/,loader:'style!css',exclude:/node_modules/},
+            {test:/\.styl$/,loader:'style!css!stylus',exclude:/node_modules/},
+            {test:/\.coffee$/,loader:"coffee-loader"},
+            {test:/.*\/app\/.*\.js$/,loader:"uglify"},
+            {test:/\.(js|jsx)$/,exclude:/node_modules/,loader:'babel'}
         ],
         preLoaders:[
             {

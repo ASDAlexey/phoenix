@@ -13,7 +13,7 @@ footer.footer
     .footer-links
         div.block
             h3 Главное меню
-            ul
+            ul(fadein3dfooter)
                 li
                     a(href="./") Документация
                 li
@@ -26,7 +26,7 @@ footer.footer
                     a(href="./") Контакты
         div.block
             h3 Навигация
-            ul
+            ul(fadein3dfooter)
                 li
                     a(href="./navigation.html") Виды бензина
                 li
@@ -48,7 +48,7 @@ footer.footer
         div.block
             h3 Производители
             // В случае если у ul более 9 элементов, то ul добаляется класс .double-width
-            ul.double-width
+            ul.double-width(fadein3dfooter)
                 li
                     a(href="./manufacturer.html") Антипинский НПЗ
                 li
@@ -81,10 +81,10 @@ footer.footer
                     a(href="./manufacturer.html") Уфимский НПЗ
                 li
                     a(href="./manufacturer.html") ЧН Татнефть АЗС-Центр
-        .block.also-questions
+        .block.also-questions(fadein3dfooter)
             h3 Остались вопросы?
             div
-                a(ng-click="openPopup('ask_questions',{})") Задайте их менеджеру
+                a(ng-click="openPopup('request',{text_msg:'Задать вопрос менеджеру'})") Задайте их менеджеру
     .footer-bottom
         .container
             .copyright

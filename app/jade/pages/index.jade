@@ -53,18 +53,18 @@ block content
                 ui-gmap-marker(coords='{"latitude": 56.7600575,"longitude": 33.8414983}' options="marker.options" idkey="3" ng-init="marker.options.icon='images/baloons/2.png'")
                 ui-gmap-marker(coords='{"latitude": 51.66456585,"longitude": 44.8945049}' options="marker.options" idkey="4" ng-init="marker.options.icon='images/baloons/2.png'")
                 ui-gmap-marker(coords='{"latitude": 54.6150719,"longitude": 39.6932685}' options="marker.options" idkey="5" ng-init="marker.options.icon='images/baloons/2.png'")
-    section.status
+    section.status.animated.zoomInUp
         .inner-status
             h1.title-default Статус доставки груза
             form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
                 input(type="text" name="delivery_status" placeholder="Введите номер накладной" ng-model='dataForm.data.delivery_status' autocomplete="off" required)
-                span(ng-click="openPopup('ask_questions',{})") Где найти номер накладной
+                span(ng-click="openPopup('request',{text_msg:'Где найти номер накладной'})") Где найти номер накладной
                 button.send(ng-click='send(dataForm,formValidate,action)')
                     span Показать
                 input(type="hidden" name="task" ng-init='dataForm.hidden.task="delivery_status"' ng-model='dataForm.hidden.task')
     section.why-we
         h1.title-default Почему мы?
-        ul
+        ul(fadein3d)
             each item in why_we
                 li
                     h2 #{item.title}
@@ -92,12 +92,12 @@ block content
                                 li (#{product.fuel})
                         div.description
                             p #{product.description}
-                        div.order
-                            a(href="")
+                        div.order(fadeinfly)
+                            a(href="" ng-click="openPopup('order',{product:'#{JSON.stringify(product)}'})")
                                 span Заказать
     section.collaborate
         h1.title-default С нами сотрудничают
-        ul
+        ul(fadeinfly)
             li Автозаправки
             li Железнодорожные службы
             li Авиаперевозки
@@ -105,7 +105,7 @@ block content
             li Транспортные службы
             li Частные дома
         div.wrapper-link
-            a(href="" ng-click="openPopup('ask_questions',{})")
+            a(href="" ng-click="openPopup('partners',{})")
                 span Стань нашим партнером
     section.petroleum-products
         h1.title-default Продажа нефтепродуктов
