@@ -1,0 +1,52 @@
+[
+  {
+    "src":"./images/fuel-truck/1.jpg",
+    "caliber":"46 200л",
+    "сompartments":"4",
+    "volumes_of_compartments":["13 240л","14 440л","5 180л","13 340л"],
+    "title":"VOLVO FH",
+    "registration_number":"В 293 РК 197",
+    "registration_number_trailer":"ЕА 0939 77",
+    "drivers":["Малкин Сергей Иванович","Владимиров Евгений Викторович"]
+  },
+  {
+    "src":"./images/fuel-truck/2.jpg",
+    "caliber":"42 000л",
+    "сompartments":"3",
+    "volumes_of_compartments":["12 700л","14 440л","14 900л"],
+    "title":"VOLVO FH",
+    "registration_number":"У 618 ТУ 197",
+    "registration_number_trailer":"ВУ 6881 77",
+    "drivers":["Малкин Сергей Иванович","Владимиров Евгений Викторович"]
+  },
+  {
+    "src":"./images/fuel-truck/3.jpg",
+    "caliber":"41 130л",
+    "сompartments":"6",
+    "volumes_of_compartments":["12 375л","3 241л","4 158л","6 132л","5 065л","10 159л"],
+    "title":"МАN TGS",
+    "registration_number":"X 247 KC 777",
+    "registration_number_trailer":"ЕВ 9552 77 ",
+    "drivers":["Малкин Сергей Иванович","Владимиров Евгений Викторович"]
+  },
+  {
+    "src":"./images/fuel-truck/4.jpg",
+    "caliber":"41 130л",
+    "сompartments":"6",
+    "volumes_of_compartments":["12 375л","3 241л","4 158л","6 132л","5 065л","10 159л"],
+    "title":"МАN TGS",
+    "registration_number":"X 247 KC 777",
+    "registration_number_trailer":"ЕВ 9552 77 ",
+    "drivers":["Малкин Сергей Иванович","Владимиров Евгений Викторович"]
+  },
+  {
+    "src":"./images/fuel-truck/5.jpg",
+    "caliber":"41 130л",
+    "сompartments":"6",
+    "volumes_of_compartments":["12 375л","3 241л","4 158л","6 132л","5 065л","10 159л"],
+    "title":"МАN TGS",
+    "registration_number":"X 247 KC 777",
+    "registration_number_trailer":"ЕВ 9552 77 ",
+    "drivers":["Малкин Сергей Иванович","Владимиров Евгений Викторович"]
+  }
+]

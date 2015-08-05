@@ -1,6 +1,48 @@
 //- index.jade
 extends ../layout.jade
 block content
+    section.wrapper-list-products
+        h1 Автопарк бензовозов для аренды
+        // Данные по машинам находятся в файле ./app/json/новая-1438749792.xlsx
+        ul.list-products
+            each fuel_tanker in fuel_tankers
+                li
+                    .left-aside
+                        .wrapper-img(style="background-image:url('#{fuel_tanker.src}')")
+                        ul.short-info
+                            li Калибр:
+                                strong #{fuel_tanker.caliber}
+                            li Отсеков:
+                                strong #{fuel_tanker.сompartments}
+                            li Объемы отсеков:
+                            each value in fuel_tanker.volumes_of_compartments
+                                li
+                                    strong #{value}
+                    .content-info
+                        h2 #{fuel_tanker.title}
+                        ul.list-numbers
+                            li Регистрационный номер:
+                                strong #{fuel_tanker.registration_number}
+                            li Регистрационный номер полуприцепа:
+                                strong #{fuel_tanker.registration_number_trailer}
+                        h3 Водители:
+                        ul.list-drivers
+                            each driver in fuel_tanker.drivers
+                                li
+                                    span #{driver}
+                                    a(href="") Получить персональные данные
+                        div.order(fadeinfly)
+                            a(href="" ng-click="openPopup('order',{product:'#{JSON.stringify(fuel_tanker)}'})")
+                                span Арендовать
+    section.status.animated.zoomInUp
+        .inner-status
+            h1.title-default Статус доставки груза
+            form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
+                input(type="text" name="delivery_status" placeholder="Введите номер накладной" ng-model='dataForm.data.delivery_status' autocomplete="off" required)
+                span(ng-click="openPopup('request',{text_msg:'Где найти номер накладной'})") Где найти номер накладной
+                button.send(ng-click='send(dataForm,formValidate,action)')
+                    span Показать
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="delivery_status"' ng-model='dataForm.hidden.task')
     article.content-block.content-list
         p У вас есть необходимость оптовой доставки нефтепродуктов, но нет подходящего транспорта? Вам требуется надежная и ответственная компания, которая выполнит все работы без разорительного счета за свои услуги? Вы обратились по нужному адресу! Основной вид деятельности нашей компании - перевозка нефтепродуктов по всему Поволжью. Нами также предоставляется аренда автоцистерн для нефтепродуктов в случае, если у вас есть продукция данной категории, но не на чем ее перевезти.
         h1 Особенности перевозки нефтепродуктов

@@ -78,18 +78,23 @@ block content
                     .row
                         div.info
                             ul
-                                li
-                                    h2 #{product.title}
-                                li
-                                    span maрка
-                                    | #{product.mark}
-                                li
-                                    span класс топлива
-                                    | #{product.grade_of_fuel}
-                                li
-                                    span вид
-                                    | #{product.type}
-                                li (#{product.fuel})
+                                if product.title!=''
+                                    li
+                                        h2 #{product.title}
+                                if product.mark!=''
+                                    li
+                                        span maрка
+                                        | #{product.mark}
+                                if product.grade_of_fuel!=''
+                                    li
+                                        span класс топлива
+                                        | #{product.grade_of_fuel}
+                                if product.type!=''
+                                    li
+                                        span вид
+                                        | #{product.type}
+                                if product.fuel!=''
+                                    li (#{product.fuel})
                         div.description
                             p #{product.description}
                         div.order(fadeinfly)

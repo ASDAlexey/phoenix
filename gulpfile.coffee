@@ -24,6 +24,7 @@ browserSync = require('browser-sync').create()
 watch = require('gulp-watch')
 stripCssComments = require('gulp-strip-css-comments')
 uglify = require('gulp-uglify')
+connect = require('gulp-connect')
 reload = browserSync.reload
 
 src = './'
@@ -110,13 +111,13 @@ gulp.task 'stylus',->
       sourcemaps : true
     ))
   .pipe gulp.dest('./app/styles')
-#  .pipe(connect.reload())
+  .pipe(connect.reload())
 gulp.task 'sprite',->
   spriteData = gulp.src('./app/images/sprite/*.*').pipe(spritesmith(
     imgName : 'sprite.png'
     cssName : 'utilities/_sprite.styl'
-    imgPath : '../images/sprite.png'
-    padding : 2
+    imgPath:'../images/sprite.png'
+    padding : 4
   ))
   spriteData.img.pipe gulp.dest('./app/images/')
   spriteData.css.pipe gulp.dest('./app/styles/')
@@ -127,6 +128,7 @@ gulp.task 'jade',->
   data.catalog = require './app/json/catalog.json'
   data.navigation_list = require './app/json/navigation-list.json'
   data.contacts = require './app/json/contacts.json'
+  data.fuel_tankers = require './app/json/fuel-tankers.json'
   #  data.images.bgslider = scandir('./app/images/main-slider','names')
   gulp.src('./app/jade/pages/*.jade')
   .pipe(plumber(errorHandler : (error,file) ->
@@ -138,11 +140,12 @@ gulp.task 'jade',->
       locals : data
     ))
   .pipe gulp.dest('./app/')
-gulp.task 'stripCss',->
+  .pipe(connect.reload())
+gulp.task 'stripCss', ->
   gulp.src('./app/styles/application.css')
   .pipe(stripCssComments())
   .pipe gulp.dest('./app/styles/')
-gulp.task 'jsmin',->
+gulp.task 'jsmin', ->
   gulp.src('./app/scripts/vendors/loadCSS.js')
   .pipe(uglify())
   .pipe gulp.dest('./app/scripts/vendors/')
@@ -152,22 +155,28 @@ gulp.task 'browser-sync',->
       baseDir : "./app"
     open : false
   )
+gulp.task 'connect',->
+  connect.server
+    root : 'app'
+    livereload : true
+    port : 3000
 gulp.task 'watchSprite',->
   watch './app/images/sprite/*.*',->
     gulp.start('stylus')
-  watch './app/jade/**/*.jade',->
-    gulp.start('jade')
   watch './app/json/**/*.json',->
     gulp.start('jade')
   watch './app/styles/**/*.styl',->
     gulp.start('stylus')
+  watch './app/jade/**/*.jade',->
+    gulp.start('jade')
 gulp.task 'watch',->
-  gulp.watch('./app/*.html').on('change',browserSync.reload)
-  gulp.watch('./app/styles/application.css').on('change',browserSync.reload)
+#  gulp.watch('./app/*.html').on('change',browserSync.reload)
+#  gulp.watch('./app/styles/application.css').on('change',browserSync.reload)
 gulp.task 'default',[
   'sprite'
   'jade'
-  'browser-sync'
-  'watch'
+#  'watch'
   'watchSprite'
+  'connect'
+#  'browser-sync'
 ]
