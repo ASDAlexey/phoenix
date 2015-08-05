@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--html(style="opacity:0")-->
-<html>
+<html style="opacity:0">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=1200">
@@ -9,7 +8,7 @@
     <meta name="keywords" content="Keywords">
     <title>Феникс</title>
     <link rel="icon" type="image/png" href="./images/favicon.png">
-    <link rel="stylesheet" href="./styles/application.css">
+    <script async>var loadCSSFiles=function(){var e,t,a=["./styles/application.css"],n=document.getElementsByTagName("head")[0];for(t=0;t<a.length;t++)e=document.createElement("link"),e.rel="stylesheet",e.href=a[t],n.appendChild(e)},raf=requestAnimationFrame||mozRequestAnimationFrame||webkitRequestAnimationFrame||msRequestAnimationFrame;raf?(raf(loadCSSFiles)):window.addEventListener("load",loadCSSFiles);</script>
   </head>
   <body pointer-events-scroll ng-controller="PopupCtrl">
     <aside class="aside">
@@ -34,6 +33,68 @@
     </aside>
     <div class="wrapper dNtoLoad animated bounceInUp">
       <main class="main">
+        <article class="content-block">
+          <div class="two-column-block">
+            <div class="row">
+              <div style="background-image:url('./images/bg/manufacturer.jpg')" class="img"><img src="./images/bg/manufacturer.jpg"></div>
+              <div>
+                <div class="inner">
+                  <div class="wrapper-img"><img src="./images/logo-img.jpg"></div>
+                  <h1>Антипинский НПЗ</h1>
+                  <p>ТД Феникс реализует продукцию одного из своих самых перспективных партнеров в Сибири – Антипинского НПЗ. Этот завод построен совсем недавно, разные его очереди были запущены с 2006 по 2012 годы. Он является современным предприятием, где установлено оборудование по переработке нефти в продукцию высокого качества, соответствующую стандартам Евро-5. До его появления такой нефтяной регион, как Тюмень бы лишен светлых нефтепродуктов собственного производства, и их приходилось завозить из соседних областей.</p>
+                  <p>Антипинский НПЗ - предприятие динамичное, постоянно наращивающее обороты и имеющее далеко идущие планы. На нашем сайте вы можете заказать следующую продукцию его производства:</p>
+                  <ul>
+                    <li>Дизельное топливо;</li>
+                    <li>Бензин и прочее.</li>
+                  </ul>
+                  <p>Более подробно узнать об ассортименте продукции и ценах на нее вы можете в прайсе или при личном контакте с менеджером. Мы работаем по всему Поволжью, и доставим вам продукцию Антипинского НПЗ в любых объемах и прямо на место. Оптовые поставки, собственный транспорт, дифференцированная система скидок – все это сделает наше сотрудничество удобным и приятным. Звоните нам, делайте заказ!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <section class="catalog">
+          <h1 class="title-default">Продукция</h1>
+          <ul class="list-products">
+            <li>
+              <div class="row">
+                <div class="info">
+                  <ul>
+                    <li>
+                      <h2>Бензин автомобильный неэтилированный</h2>
+                    </li>
+                    <li><span>maрка</span>Регуляр-92,</li>
+                    <li><span>класс топлива</span>4</li>
+                    <li>(АИ-92-4)</li>
+                  </ul>
+                </div>
+                <div class="description">
+                  <ul>
+                    <li><a download href="./download/certificate.pdf">Скачать сертификат</a></li>
+                    <li><span>34 100</span></li>
+                  </ul>
+                </div>
+                <div fadeinfly class="order"><a href="" ng-click="openPopup('order',{product:'{&quot;title&quot;:&quot;Бензин автомобильный неэтилированный&quot;,&quot;mark&quot;:&quot;Регуляр-92,&quot;,&quot;grade_of_fuel&quot;:&quot;4&quot;,&quot;type&quot;:&quot;&quot;,&quot;fuel&quot;:&quot;АИ-92-4&quot;,&quot;description&quot;:&quot;Бензин 92 является одной из самых популярных марок топлива, и объемы его поставок всегда отличались внушительностью. Наша компания доставляет или предоставляет для перевозки специально оборудованный транспорт с обученным персоналом. Используя наши услуги, вы можете заказать бензин 92 оптом и получить самую выгодную цену доставки. Мы работаем по всему Поволжью...&quot;}'})"><span>Заказать</span></a></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="rent">
+          <div class="img-content">
+            <div class="inner">
+              <h1>Аренда бензовоза</h1><img src="./images/car.jpg">
+            </div>
+          </div>
+          <div class="rent-content">
+            <div class="inner">
+              <p>Торговый дом «Феникс» имеет собственный автопарк, состоящий из двенадцати бензовозов объемом от 27 до 45 литров. Наши специалисты помогут вам подобрать бензовоз, идеально отвечающий вашим требованиям. Узнать подробнее об условиях аренды бензовозов и сделать заказ вы можете, позвонив по номеру 8-800-775-93-38 или заполнив форму на сайте.</p>
+              <div class="wrapper-links">
+                <div><a href="" ng-click="openPopup('order',{product:'{&quot;title&quot;:&quot;Бензин автомобильный неэтилированный&quot;,&quot;mark&quot;:&quot;Регуляр-92,&quot;,&quot;grade_of_fuel&quot;:&quot;4&quot;,&quot;type&quot;:&quot;&quot;,&quot;fuel&quot;:&quot;АИ-92-4&quot;,&quot;description&quot;:&quot;Бензин 92 является одной из самых популярных марок топлива, и объемы его поставок всегда отличались внушительностью. Наша компания доставляет или предоставляет для перевозки специально оборудованный транспорт с обученным персоналом. Используя наши услуги, вы можете заказать бензин 92 оптом и получить самую выгодную цену доставки. Мы работаем по всему Поволжью...&quot;}'})"><span>Заказать бензовоз</span></a></div>
+                <div><a href="./benzovozi.html" class="more">Посмотреть парк бензовозов</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
     <footer class="footer">
@@ -153,15 +214,15 @@
         </h1>
         <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
           <div>
-            <input id="name1" type="text" name="name2" ng-model="dataForm.data.name" autocomplete="off" required>
+            <input id="name2" type="text" name="name2" ng-model="dataForm.data.name" autocomplete="off" required>
             <label for="name2">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone2" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone2" type="text" name="phone2" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone2">Ваш телефон</label>
           </div>
           <div>
-            <textarea id="msg1" type="text" name="msg2" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <textarea id="msg2" type="text" name="msg2" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg2">Сообщение</label>
           </div>
           <div class="wrapper-send">
@@ -179,15 +240,15 @@
         </h1>
         <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
           <div>
-            <input id="name1" type="text" name="name3" ng-model="dataForm.data.name" autocomplete="off" required>
+            <input id="name3" type="text" name="name3" ng-model="dataForm.data.name" autocomplete="off" required>
             <label for="name3">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone3" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone3" type="text" name="phone3" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone3">Ваш телефон</label>
           </div>
           <div>
-            <textarea id="msg1" type="text" name="msg3" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <textarea id="msg3" type="text" name="msg3" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg3">Сообщение</label>
           </div>
           <div ng-if="data.product" class="info">
@@ -217,15 +278,15 @@
         </h1>
         <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
           <div>
-            <input id="name1" type="text" name="name4" ng-model="dataForm.data.name" autocomplete="off" required>
+            <input id="name4" type="text" name="name4" ng-model="dataForm.data.name" autocomplete="off" required>
             <label for="name4">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone4" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone4" type="text" name="phone4" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone4">Ваш телефон</label>
           </div>
           <div>
-            <textarea id="msg1" type="text" name="msg4" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <textarea id="msg4" type="text" name="msg4" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg4">Сообщение</label>
           </div>
           <div class="wrapper-send">
@@ -243,7 +304,7 @@
         </div>
       </div>
     </div>
-    <div id="container-preloader" preloader="[&quot;.wrapper&quot;]" animate-preloader class="svg-container-block">
+    <div id="container-preloader" preloader="[&quot;&quot;]" animate-preloader class="svg-container-block">
       <div class="progress">
         <div id="persent-loaded" class="text">0</div>
         <progress-circle></progress-circle>
@@ -261,13 +322,8 @@
     </div>
   </body>
 </html>
-<!--script(src='./scripts/vendors/loadCSS.js')-->
-<!--script.-->
-<!--    var stylesheet=loadCSS("./styles/application.css");-->
-<!--    onloadCSS(stylesheet,function(){-->
-<!--    });-->
 <script src="./scripts/vendors/preloadjs-0.6.1.min.js" defer></script>
 <script src="./scripts/vendors/snap.svg.js" defer></script>
-<!--script(src="scripts/bundle.js" defer)-->
+<!--script(src="./scripts/bundle.js" defer)-->
 <script src="http://localhost:8080/webpack-dev-server.js" defer></script>
 <script src="http://localhost:8080/bundle.js" defer></script>

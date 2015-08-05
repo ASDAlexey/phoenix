@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--html(style="opacity:0")-->
-<html>
+<html style="opacity:0">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=1200">
@@ -9,7 +8,7 @@
     <meta name="keywords" content="Keywords">
     <title>Феникс</title>
     <link rel="icon" type="image/png" href="./images/favicon.png">
-    <link rel="stylesheet" href="./styles/application.css">
+    <script async>var loadCSSFiles=function(){var e,t,a=["./styles/application.css"],n=document.getElementsByTagName("head")[0];for(t=0;t<a.length;t++)e=document.createElement("link"),e.rel="stylesheet",e.href=a[t],n.appendChild(e)},raf=requestAnimationFrame||mozRequestAnimationFrame||webkitRequestAnimationFrame||msRequestAnimationFrame;raf?(raf(loadCSSFiles)):window.addEventListener("load",loadCSSFiles);</script>
   </head>
   <body pointer-events-scroll ng-controller="PopupCtrl">
     <aside class="aside">
@@ -387,15 +386,15 @@
         </h1>
         <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
           <div>
-            <input id="name1" type="text" name="name2" ng-model="dataForm.data.name" autocomplete="off" required>
+            <input id="name2" type="text" name="name2" ng-model="dataForm.data.name" autocomplete="off" required>
             <label for="name2">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone2" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone2" type="text" name="phone2" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone2">Ваш телефон</label>
           </div>
           <div>
-            <textarea id="msg1" type="text" name="msg2" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <textarea id="msg2" type="text" name="msg2" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg2">Сообщение</label>
           </div>
           <div class="wrapper-send">
@@ -413,15 +412,15 @@
         </h1>
         <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
           <div>
-            <input id="name1" type="text" name="name3" ng-model="dataForm.data.name" autocomplete="off" required>
+            <input id="name3" type="text" name="name3" ng-model="dataForm.data.name" autocomplete="off" required>
             <label for="name3">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone3" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone3" type="text" name="phone3" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone3">Ваш телефон</label>
           </div>
           <div>
-            <textarea id="msg1" type="text" name="msg3" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <textarea id="msg3" type="text" name="msg3" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg3">Сообщение</label>
           </div>
           <div ng-if="data.product" class="info">
@@ -451,15 +450,15 @@
         </h1>
         <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
           <div>
-            <input id="name1" type="text" name="name4" ng-model="dataForm.data.name" autocomplete="off" required>
+            <input id="name4" type="text" name="name4" ng-model="dataForm.data.name" autocomplete="off" required>
             <label for="name4">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone4" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone4" type="text" name="phone4" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone4">Ваш телефон</label>
           </div>
           <div>
-            <textarea id="msg1" type="text" name="msg4" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <textarea id="msg4" type="text" name="msg4" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg4">Сообщение</label>
           </div>
           <div class="wrapper-send">
@@ -477,7 +476,7 @@
         </div>
       </div>
     </div>
-    <div id="container-preloader" preloader="[&quot;.wrapper&quot;]" animate-preloader class="svg-container-block">
+    <div id="container-preloader" preloader="[&quot;&quot;]" animate-preloader class="svg-container-block">
       <div class="progress">
         <div id="persent-loaded" class="text">0</div>
         <progress-circle></progress-circle>
@@ -495,13 +494,8 @@
     </div>
   </body>
 </html>
-<!--script(src='./scripts/vendors/loadCSS.js')-->
-<!--script.-->
-<!--    var stylesheet=loadCSS("./styles/application.css");-->
-<!--    onloadCSS(stylesheet,function(){-->
-<!--    });-->
 <script src="./scripts/vendors/preloadjs-0.6.1.min.js" defer></script>
 <script src="./scripts/vendors/snap.svg.js" defer></script>
-<!--script(src="scripts/bundle.js" defer)-->
+<!--script(src="./scripts/bundle.js" defer)-->
 <script src="http://localhost:8080/webpack-dev-server.js" defer></script>
 <script src="http://localhost:8080/bundle.js" defer></script>

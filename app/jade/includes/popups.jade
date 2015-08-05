@@ -31,13 +31,13 @@ popup-svg(name="partners").hide-block
                 span
         form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
             div
-                input#name1(type="text" name="name2" ng-model='dataForm.data.name' autocomplete="off" required)
+                input#name2(type="text" name="name2" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name2") Ваше имя
             div
-                input#phone1(type="text" name="phone2" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone2(type="text" name="phone2" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone2") Ваш телефон
             div
-                textarea#msg1(type="text" name="msg2" ng-model='dataForm.data.msg' autocomplete="off" required)
+                textarea#msg2(type="text" name="msg2" ng-model='dataForm.data.msg' autocomplete="off" required)
                 label(for="msg2") Сообщение
             .wrapper-send
                 button.send(ng-click='send(dataForm,formValidate,action)')
@@ -51,13 +51,14 @@ popup-svg(name="order").hide-block
                 span
         form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
             div
-                input#name1(type="text" name="name3" ng-model='dataForm.data.name' autocomplete="off" required)
+                input#name3(type="text" name="name3" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name3") Ваше имя
             div
-                input#phone1(type="text" name="phone3" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone3(type="text" name="phone3" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone3") Ваш телефон
+
             div
-                textarea#msg1(type="text" name="msg3" ng-model='dataForm.data.msg' autocomplete="off" required)
+                textarea#msg3(type="text" name="msg3" ng-model='dataForm.data.msg' autocomplete="off" required)
                 label(for="msg3") Сообщение
             div.info(ng-if="data.product")
                 ul
@@ -86,13 +87,13 @@ popup-svg(name="recall").hide-block
                 span
         form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
             div
-                input#name1(type="text" name="name4" ng-model='dataForm.data.name' autocomplete="off" required)
+                input#name4(type="text" name="name4" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name4") Ваше имя
             div
-                input#phone1(type="text" name="phone4" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone4(type="text" name="phone4" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone4") Ваш телефон
             div
-                textarea#msg1(type="text" name="msg4" ng-model='dataForm.data.msg' autocomplete="off" required)
+                textarea#msg4(type="text" name="msg4" ng-model='dataForm.data.msg' autocomplete="off" required)
                 label(for="msg4") Сообщение
             .wrapper-send
                 button.send(ng-click='send(dataForm,formValidate,action)')

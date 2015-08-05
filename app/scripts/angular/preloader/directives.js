@@ -32,6 +32,7 @@ directive.directive('preloader',[
                 };
                 searchContainers=scope.preloader;
                 allElements=$document[0].querySelectorAll("body "+searchContainers[0]+" *");
+                //allElements=$document[0].querySelectorAll("body *");
                 angular.forEach(allElements,function(value,index){
                     var newSrc,url,urlString;
                     urlString=$window.getComputedStyle(value).getPropertyValue('background-image');
@@ -211,7 +212,6 @@ directive.directive('progressCircle',[
             replace:true,
             template:progress_circle,
             link:function(scope,element,attrs){
-                console.log(element[0].querySelector('.circle'));
                 TweenMax.set(element[0].querySelector('.circle'),{
                     drawSVG:'0% 0%'
                 });

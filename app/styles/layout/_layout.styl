@@ -16,19 +16,90 @@ body
   margin-top:-976px
   +below(1540px)
     margin-top:-1064px
-.content-block
-  after()
-  width:1000px
-  padding:0 33px
-.container
-  width:1000px
-  padding:0 33px
 .title-default
   color:#51565a
   br(36px)
-@media screen and (max-width:1100px)
+.content-block
+  padding-left:38px
+  &.content-list
+    background-color:#f9f8ef
+    padding-bottom:86px
+    padding-top:86px
+  > p
+    color:#51565a
+    font-size:16px
+    line-height:1.4
+  > h1
+    margin:26px 0
+    color:#51565a
+    rr(16px)
+  > ul
+    > li
+      padding-left:31px
+      position:relative
+      z-index:0
+      margin-top:38px
+      &:after
+        content:''
+        position:absolute
+        z-index:1
+        left:0
+        top:50%
+        tt(0, -50%)
+        sprite($content_check)
+  .two-column-block
+    margin-left:-38px
+    display:table
+    width:calc(100% + 38px)
+    max-width 1280px
+    .row
+      display:table-row
+      width:100%
+      > div
+        display:table-cell
+        vertical-align:middle
+        padding-left:36px
+        &.img
+          vertical-align:top
+          padding-left:0
+          width:calc(100% - 500px)
+          background-repeat:no-repeat
+          background-position:center center
+          background-size cover
+          img
+            visibility:hidden
+            width:100%
+        .inner
+          width:500px
+          dibt()
+          .wrapper-img
+            margin-top:49px
+            text-align:left
+            img
+              dibt()
+          h1
+            color:#000
+            rm(24px)
+            margin-top:20px
+          p
+            margin-top:21px
+            font-size:16px
+            line-height:1.4
+          ul
+            > li
+              margin-top:20px
+              position:relative
+              z-index:0
+              padding-left:26px
+              &:after
+                content:''
+                position:absolute
+                z-index:1
+                sprite($check_in_list)
+                left:3px
+                top:50%
+                tt(0, -50%)
+@media screen and (max-width:1200px)
   html, body
     overflow-x:hidden
-    width:100%
-  .hide
-    display:none
+    width:100

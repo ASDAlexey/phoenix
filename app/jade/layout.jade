@@ -1,6 +1,5 @@
 doctype html
-//html(style="opacity:0")
-html
+html(style="opacity:0")
     head
         include ./includes/head.jade
         include ./includes/mixins.jade
@@ -19,13 +18,8 @@ html
         include ./includes/popups.jade
         include ./includes/thanks.jade
         include ./includes/preloader.jade
-//script(src='./scripts/vendors/loadCSS.js')
-//script.
-//    var stylesheet=loadCSS("./styles/application.css");
-//    onloadCSS(stylesheet,function(){
-//    });
 script(src="./scripts/vendors/preloadjs-0.6.1.min.js" defer)
 script(src="./scripts/vendors/snap.svg.js" defer)
-//script(src="scripts/bundle.js" defer)
+//script(src="./scripts/bundle.js" defer)
 script(src="http://localhost:8080/webpack-dev-server.js" defer)
 script(src="http://localhost:8080/bundle.js" defer)

@@ -64,7 +64,7 @@ directive.directive('popupSvg',[
                             scale:0,
                             y:80,
                             rotationX:180,
-                            transformOrigin:'0% 50% -50',
+                            transformOrigin:'0% 50% -50%',
                             ease:Back.easeOut
                         },0.1,'+=0');
                     }),100);

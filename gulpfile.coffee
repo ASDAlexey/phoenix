@@ -22,6 +22,8 @@ webpack = require('gulp-webpack-build')
 path = require('path')
 browserSync = require('browser-sync').create()
 watch = require('gulp-watch')
+stripCssComments = require('gulp-strip-css-comments')
+uglify = require('gulp-uglify')
 reload = browserSync.reload
 
 src = './'
@@ -111,9 +113,11 @@ gulp.task 'stylus',->
 #  .pipe(connect.reload())
 gulp.task 'sprite',->
   spriteData = gulp.src('./app/images/sprite/*.*').pipe(spritesmith(
-    imgName : '../images/sprite.png'
+    imgName : 'sprite.png'
     cssName : 'utilities/_sprite.styl'
-    padding : 4))
+    imgPath : '../images/sprite.png'
+    padding : 2
+  ))
   spriteData.img.pipe gulp.dest('./app/images/')
   spriteData.css.pipe gulp.dest('./app/styles/')
 gulp.task 'jade',->
@@ -134,6 +138,14 @@ gulp.task 'jade',->
       locals : data
     ))
   .pipe gulp.dest('./app/')
+gulp.task 'stripCss',->
+  gulp.src('./app/styles/application.css')
+  .pipe(stripCssComments())
+  .pipe gulp.dest('./app/styles/')
+gulp.task 'jsmin',->
+  gulp.src('./app/scripts/vendors/loadCSS.js')
+  .pipe(uglify())
+  .pipe gulp.dest('./app/scripts/vendors/')
 gulp.task 'browser-sync',->
   browserSync.init(
     server :

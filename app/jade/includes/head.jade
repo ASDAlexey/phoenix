@@ -5,4 +5,5 @@ meta(name="description" content="Description")
 meta(name="keywords" content="Keywords")
 title Феникс
 link(rel="icon" type="image/png" href="./images/favicon.png")
-link(rel="stylesheet" href="./styles/application.css")
+script(async).
+    var loadCSSFiles=function(){var e,t,a=["./styles/application.css"],n=document.getElementsByTagName("head")[0];for(t=0;t<a.length;t++)e=document.createElement("link"),e.rel="stylesheet",e.href=a[t],n.appendChild(e)},raf=requestAnimationFrame||mozRequestAnimationFrame||webkitRequestAnimationFrame||msRequestAnimationFrame;raf?(raf(loadCSSFiles)):window.addEventListener("load",loadCSSFiles);
