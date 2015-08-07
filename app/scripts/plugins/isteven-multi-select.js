@@ -582,7 +582,7 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                 var label   = '';                
 
                 angular.forEach( temp, function( value, key ) {                    
-                    item[ value ] && ( label += '&nbsp;' + value.split( '.' ).reduce( function( prev, current ) {
+                    item[ value ] && ( label += value.split( '.' ).reduce( function( prev, current ) {
                         return prev[ current ]; 
                     }, item ));        
                 });
@@ -950,16 +950,16 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
 
             // configurable button labels                       
             if ( typeof attrs.translation !== 'undefined' ) {
-                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + '&nbsp;&nbsp;' + $scope.translation.selectAll );
-                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + '&nbsp;&nbsp;' + $scope.translation.selectNone );
-                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + '&nbsp;&nbsp;' + $scope.translation.reset );
+                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  +  $scope.translation.selectAll );
+                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone +  $scope.translation.selectNone );
+                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + + $scope.translation.reset );
                 $scope.lang.search          = $scope.translation.search;                
                 $scope.lang.nothingSelected = $sce.trustAsHtml( $scope.translation.nothingSelected );                
             }
             else {
-                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + '&nbsp;&nbsp;Select All' );                
-                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + '&nbsp;&nbsp;Select None' );
-                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + '&nbsp;&nbsp;Reset' );
+                $scope.lang.selectAll       = $sce.trustAsHtml( $scope.icon.selectAll  + 'Select All' );
+                $scope.lang.selectNone      = $sce.trustAsHtml( $scope.icon.selectNone + 'Select None' );
+                $scope.lang.reset           = $sce.trustAsHtml( $scope.icon.reset      + 'Reset' );
                 $scope.lang.search          = 'Search...';
                 $scope.lang.nothingSelected = 'None Selected';                
             }

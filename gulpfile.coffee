@@ -129,6 +129,11 @@ gulp.task 'jade',->
   data.navigation_list = require './app/json/navigation-list.json'
   data.contacts = require './app/json/contacts.json'
   data.fuel_tankers = require './app/json/fuel-tankers.json'
+  data.prices = require './app/json/price.json'
+  data.selects={}
+  data.selects.manufacturer = require './app/json/selects/manufacturer.json'
+  data.selects.fuel_type = require './app/json/selects/fuel_type.json'
+  data.selects.towns = require './app/json/selects/towns.json'
   #  data.images.bgslider = scandir('./app/images/main-slider','names')
   gulp.src('./app/jade/pages/*.jade')
   .pipe(plumber(errorHandler : (error,file) ->

@@ -13,16 +13,31 @@ popup-svg(name="request").hide-block
                 input#name1(type="text" name="name1" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name1") Ваше имя
             div
-                input#phone1(type="text" name="phone1" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone1(type="text" name="phone1" ui-mask="+7(999)-999-99-99" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone1") Ваш телефон
             div
                 textarea#msg1(type="text" name="msg1" ng-model='dataForm.data.msg' autocomplete="off" required)
                 label(for="msg1") Сообщение
+            div.info(ng-if="data.product")
+                ul
+                    li(ng-if="data.product.title")
+                        h2(ng-bind="data.product.title")
+                    li(ng-if="data.product.mark")
+                        span maрка
+                        | {{data.product.mark}}
+                    li(ng-if="data.product.grade_of_fuel")
+                        span класс топлива
+                        | {{data.product.grade_of_fuel}}
+                    li(ng-if="data.product.type")
+                        span вид
+                        | {{data.product.type}}
+                    li(ng-if="data.product.fuel") ({{data.product.fuel}})
             .wrapper-send
                 button.send(ng-click='send(dataForm,formValidate,action)')
                     span Отправить
             input(type="hidden" name="task" ng-init='dataForm.hidden.task="request"' ng-model='dataForm.hidden.task')
             input(ng-if="data.text_msg" type="hidden" name="text_msg" ng-init='dataForm.data.text_msg=data.text_msg' ng-model='dataForm.data.text_msg')
+            input(ng-if="data.product" type="hidden" name="text" ng-init='dataForm.data.product=data.product' ng-model='dataForm.data.product')
 //Стань партнером - блок выводить только на стрнаицах где есть <a href="" ng-click="openPopup('partners',{})"><span>Стань нашим партнером</span></a>
 popup-svg(name="partners").hide-block
     section.inner-popup-block
@@ -34,7 +49,7 @@ popup-svg(name="partners").hide-block
                 input#name2(type="text" name="name2" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name2") Ваше имя
             div
-                input#phone2(type="text" name="phone2" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone2(type="text" name="phone2" ui-mask="+7(999)-999-99-99" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone2") Ваш телефон
             div
                 textarea#msg2(type="text" name="msg2" ng-model='dataForm.data.msg' autocomplete="off" required)
@@ -54,7 +69,7 @@ popup-svg(name="order").hide-block
                 input#name3(type="text" name="name3" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name3") Ваше имя
             div
-                input#phone3(type="text" name="phone3" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone3(type="text" name="phone3" ui-mask="+7(999)-999-99-99" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone3") Ваш телефон
 
             div
@@ -90,7 +105,7 @@ popup-svg(name="recall").hide-block
                 input#name4(type="text" name="name4" ng-model='dataForm.data.name' autocomplete="off" required)
                 label(for="name4") Ваше имя
             div
-                input#phone4(type="text" name="phone4" ng-model='dataForm.data.phone' autocomplete="off" required)
+                input#phone4(type="text" name="phone4" ui-mask="+7(999)-999-99-99" ng-model='dataForm.data.phone' autocomplete="off" required)
                 label(for="phone4") Ваш телефон
             div
                 textarea#msg4(type="text" name="msg4" ng-model='dataForm.data.msg' autocomplete="off" required)

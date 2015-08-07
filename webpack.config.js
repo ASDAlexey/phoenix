@@ -73,14 +73,14 @@ module.exports={
         //    //proxy: '0.0.0.0:3000'
         //}),
         new webpack.HotModuleReplacementPlugin(),
-        //new ngminPlugin(),
-        //new webpack.optimize.DedupePlugin(),
-        //new webpack.optimize.UglifyJsPlugin({
-        //    compress:{
-        //        warnings:false
-        //    },
-        //    minimize:true
-        //})
+        new ngminPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings:false
+            },
+            minimize:true
+        })
     ],
     stats:{
         colors:true

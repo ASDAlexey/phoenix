@@ -1,0 +1,72 @@
+[
+  {
+    "id":1,
+    "src": "./images/navigation-list/1.jpg",
+    "title": "Антипинский НПЗ",
+    "town": "Тюмень",
+    "product_type": "Дизельное топливо",
+    "price": "34100",
+    "date": "2015-07-09",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "id":2,
+    "src": "./images/navigation-list/2.jpg",
+    "title": "ОАО «Астраханский ГПЗ»",
+    "town": "Астрахань",
+    "product_type": "Дизельное топливо",
+    "price": "33100",
+    "date": "2015-06-09",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "id":3,
+    "src": "./images/navigation-list/3.jpg",
+    "title": "Газпром нефтехим Салават",
+    "town": "Салават",
+    "product_type": "Дизельное топливо",
+    "price": "37100",
+    "date": "2014-06-09",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "id":4,
+    "src": "./images/navigation-list/4.jpg",
+    "title": "ГАЗПРОМНЕФТЬ-МНПЗ",
+    "town": "Москва",
+    "product_type": "Дизельное топливо",
+    "price": "24100",
+    "date": "2013-01-09",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "id":5,
+    "src": "./images/navigation-list/5.jpg",
+    "title": "Куйбышевский НПЗ",
+    "town": "Куйбышев",
+    "product_type": "Дизельное топливо",
+    "price": "24100",
+    "date": "2015-06-09",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "id":6,
+    "src": "./images/navigation-list/6.jpg",
+    "title": "Уфанефтехим",
+    "town": "Уфа",
+    "product_type": "Дизельное топливо",
+    "price": "34740",
+    "date": "2015-06-10",
+    "certificate": "./download/certificate.pdf"
+  },
+  {
+    "id":7,
+    "src": "./images/navigation-list/7.jpg",
+    "title": "Ново-Уфимский нефтеперерабатывающий завод",
+    "town": "Уфа",
+    "product_type": "АИ-92-4",
+    "price": "35110",
+    "date": "2015-06-13",
+    "certificate": "./download/certificate.pdf"
+  }
+]

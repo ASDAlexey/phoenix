@@ -3,6 +3,7 @@ import 'angular';
 import './plugins/vinilla.js';
 import './vendors/cssua.js';
 import 'angular-resource';
+import 'angular-sanitize';
 import 'gsap';
 import 'gsap/src/uncompressed/utils/Draggable.js';
 import 'gsap/src/uncompressed/plugins/ScrollToPlugin.js';
@@ -15,4 +16,6 @@ import './plugins/angular-ui-utils/ui-utils.js';
 import 'angular-validation-match';
 import 'angular-animate';
 import 'angular-google-maps';
+import './plugins/isteven-multi-select'
+//import './plugins/select.js'
 import './angular/app.js';

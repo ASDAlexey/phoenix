@@ -1,0 +1,32 @@
+.filter-block
+  padding:0 0 15px 38px
+  .send-filters
+    border:2px solid #e5696b
+    dibt()
+    border-radius:6px
+    padding:6px 15px 5px
+    position:relative
+    z-index:0
+    overflow hidden
+    &:hover
+      &:after
+        left:0
+      span
+        color:#fff
+    &:after
+      content:''
+      position:absolute
+      z-index:0
+      top:0
+      left:100%
+      width:100%
+      height:100%
+      background-color:#e5696b
+      tn(.5s)
+    span
+      tn(.5s)
+      position:relative
+      z-index:1
+      bb(24px)
+      color:#e5696b
+      dibt()

@@ -30,3 +30,8 @@ if(!Element.prototype.closest){
         return null;
     };
 }
+if(!Node.prototype.remove){
+    Node.prototype.remove=function(removeChildren){
+        this.parentNode&&this.parentNode.removeChild(this);
+    };
+}

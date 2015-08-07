@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html style="opacity:0">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1200">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Description">
+    <meta name="keywords" content="Keywords">
+    <title>Феникс</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <script async>var loadCSSFiles=function(){var e,t,a=["./styles/application.css"],n=document.getElementsByTagName("head")[0];for(t=0;t<a.length;t++)e=document.createElement("link"),e.rel="stylesheet",e.href=a[t],n.appendChild(e)},raf=requestAnimationFrame||mozRequestAnimationFrame||webkitRequestAnimationFrame||msRequestAnimationFrame;raf?(raf(loadCSSFiles)):window.addEventListener("load",loadCSSFiles);</script>
+  </head>
+  <body pointer-events-scroll ng-controller="PopupCtrl">
+    <aside class="aside">
+      <div class="content-aside">
+        <header class="header"><a href="./" class="wrapper-logo"><img src="./images/logo.png" width="107" height="53"></a></header>
+        <div class="choise-town"></div>
+        <nav class="nav">
+          <ul>
+            <li><a href="./documentation.html">Документация</a></li>
+            <li><a href="./checkout.html" class="active">Оформление заказа</a></li>
+            <li><a href="./benzovozi.html">Аренда бензовозов</a></li>
+            <li><a href="./price.html">Цены</a></li>
+            <li><a href="./contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+      <dl class="info">
+        <dd><a href="tel:+78007759338"><span>8-800</span>-775-93-38</a></dd>
+        <dt><a ng-click="openPopup('recall',{})">Заказать звонок</a></dt>
+        <dd><a href="mailto:mail@tdfenix.com?subject=Заказать звонок">mail@tdfenix.com</a></dd>
+      </dl>
+    </aside>
+    <div class="wrapper dNtoLoad animated bounceInUp">
+      <main class="main">
+        <section class="wrapper-list-products">
+          <h1>Цены на реализуемые виды топлива</h1>
+          <!-- predicate='title'; - значение по умолчания по какому полю сортировать таблицу при загруке-->
+          <!-- action - url куда будет посылаться ajax,для загруки новых данных в таблицу-->
+          <!-- prices - коллекция данных поставляемых в таблицу, при загрузке страницы-->
+          <div ng-init="predicate='title';action='./controller.php';prices=[{&quot;id&quot;:1,&quot;src&quot;:&quot;./images/navigation-list/1.jpg&quot;,&quot;title&quot;:&quot;Антипинский НПЗ&quot;,&quot;town&quot;:&quot;Тюмень&quot;,&quot;product_type&quot;:&quot;Дизельное топливо&quot;,&quot;price&quot;:&quot;34100&quot;,&quot;date&quot;:&quot;2015-07-09&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;},{&quot;id&quot;:2,&quot;src&quot;:&quot;./images/navigation-list/2.jpg&quot;,&quot;title&quot;:&quot;ОАО «Астраханский ГПЗ»&quot;,&quot;town&quot;:&quot;Астрахань&quot;,&quot;product_type&quot;:&quot;Дизельное топливо&quot;,&quot;price&quot;:&quot;33100&quot;,&quot;date&quot;:&quot;2015-06-09&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;},{&quot;id&quot;:3,&quot;src&quot;:&quot;./images/navigation-list/3.jpg&quot;,&quot;title&quot;:&quot;Газпром нефтехим Салават&quot;,&quot;town&quot;:&quot;Салават&quot;,&quot;product_type&quot;:&quot;Дизельное топливо&quot;,&quot;price&quot;:&quot;37100&quot;,&quot;date&quot;:&quot;2014-06-09&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;},{&quot;id&quot;:4,&quot;src&quot;:&quot;./images/navigation-list/4.jpg&quot;,&quot;title&quot;:&quot;ГАЗПРОМНЕФТЬ-МНПЗ&quot;,&quot;town&quot;:&quot;Москва&quot;,&quot;product_type&quot;:&quot;Дизельное топливо&quot;,&quot;price&quot;:&quot;24100&quot;,&quot;date&quot;:&quot;2013-01-09&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;},{&quot;id&quot;:5,&quot;src&quot;:&quot;./images/navigation-list/5.jpg&quot;,&quot;title&quot;:&quot;Куйбышевский НПЗ&quot;,&quot;town&quot;:&quot;Куйбышев&quot;,&quot;product_type&quot;:&quot;Дизельное топливо&quot;,&quot;price&quot;:&quot;24100&quot;,&quot;date&quot;:&quot;2015-06-09&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;},{&quot;id&quot;:6,&quot;src&quot;:&quot;./images/navigation-list/6.jpg&quot;,&quot;title&quot;:&quot;Уфанефтехим&quot;,&quot;town&quot;:&quot;Уфа&quot;,&quot;product_type&quot;:&quot;Дизельное топливо&quot;,&quot;price&quot;:&quot;34740&quot;,&quot;date&quot;:&quot;2015-06-10&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;},{&quot;id&quot;:7,&quot;src&quot;:&quot;./images/navigation-list/7.jpg&quot;,&quot;title&quot;:&quot;Ново-Уфимский нефтеперерабатывающий завод&quot;,&quot;town&quot;:&quot;Уфа&quot;,&quot;product_type&quot;:&quot;АИ-92-4&quot;,&quot;price&quot;:&quot;35110&quot;,&quot;date&quot;:&quot;2015-06-13&quot;,&quot;certificate&quot;:&quot;./download/certificate.pdf&quot;}]" ng-controller="PriceCtrl" class="wrapper-price">
+            <section class="filter-block">
+              <!-- dataForm.manufacture - название входной коллекции, dataForm.manufacturerSelected - выбранный option, т.е. чтобы получить результурующее value-->
+              <!--данного select нужно обратиться {{dataForm.manufacturerSelected[0].value}}-->
+              <custom-select input-model="dataForm.manufacturer" output-model="dataForm.manufacturerSelected">
+                <options value="" selected>Производитель</options>
+                <options value="1">ОАО &quot;Астраханский ГПЗ&quot;</options>
+                <options value="2">НПЗ ТАНЕКО</options>
+                <options value="3">Славнефть, ЯНОС</options>
+                <options value="4">Рязанская нефтеперерабатывающая компания, ЗАО &quot;РНПК&quot;</options>
+                <options value="5">ОАО &quot;Уфимский НПЗ&quot;</options>
+                <options value="6">Сызранский НПЗ</options>
+                <options value="7">Сургутский завод по стабилизации конденсата - филиал ООО &quot;Газпром переработка&quot;</options>
+                <options value="8">Чебоксарская нефтебаза ООО «Татнефть АЗС-Центр»</options>
+                <options value="9">Уфанефтехим</options>
+                <options value="10">ТАИФ</options>
+                <options value="11">Антипинский НПЗ</options>
+                <options value="12">Газпром нефтехим Салават</options>
+                <options value="13">ГАЗПРОМНЕФТЬ-МНПЗ</options>
+                <options value="14">Конарский раздаточный узел ООО «Татнефть АЗС-Центр»</options>
+                <options value="15">Куйбышевский НПЗ</options>
+                <options value="16">Ново-Уфимский нефтеперерабатывающий завод, ОАО «Новойл»</options>
+              </custom-select>
+              <custom-select input-model="dataForm.town" output-model="dataForm.townSelected">
+                <options value="" selected>Город</options>
+                <options value="1">Альметьевск</options>
+                <options value="2">Астрахань</options>
+                <options value="3">Куйбышев</options>
+                <options value="4">Москва</options>
+                <options value="5">Нижнекамск</options>
+                <options value="6">Омск</options>
+                <options value="7">Поселок Конар</options>
+                <options value="8">Рязань</options>
+                <options value="9">Салават</options>
+                <options value="10">Сургут</options>
+                <options value="11">Сызрань</options>
+                <options value="12">Тюмень</options>
+                <options value="13">Уфа</options>
+                <options value="14">Чебоксары</options>
+                <options value="15">Ярославль</options>
+              </custom-select>
+              <custom-select input-model="dataForm.fuel_type" output-model="dataForm.fuel_typeSelected">
+                <options value="" selected>Вид топлива</options>
+                <options value="1">АИ-92-4</options>
+                <options value="2">АИ-95-4</options>
+                <options value="3">Дизельное топливо</options>
+                <options value="4">СМТ</options>
+                <options value="5">Печное топливо</options>
+                <options value="6">Керосин</options>
+              </custom-select>
+              <button ng-click="send(dataForm,action)" class="send-filters"><span>Подобрать</span></button>
+            </section>
+            <table class="price-table">
+              <tr>
+                <th ng-class="{'active':predicate=='title'}"><a href="" ng-click="orderBy('title',0)" ng-class="(ordering[0])?'ask':'desk'"><span>Производитель</span></a></th>
+                <th ng-class="{'active':predicate=='town'}"><a href="" ng-click="orderBy('town',1)" ng-class="(ordering[1])?'ask':'desk'"><span>Город</span></a></th>
+                <th ng-class="{'active':predicate=='product_type'}"><a href="" ng-click="orderBy('product_type',2)" ng-class="(ordering[2])?'ask':'desk'"><span>Вид продукции</span></a></th>
+                <th ng-class="{'active':predicate=='price'}"><a href="" ng-click="orderBy('price',3)" ng-class="(ordering[3])?'desk':'ask'"><span>Цена за тонну</span></a></th>
+                <th ng-class="{'active':predicate=='date'}"><a href="" ng-click="orderBy('date',4)" ng-class="(ordering[4])?'desk':'ask'"><span>Обновление</span></a></th>
+                <th><a href=""><span>Сертификаты</span></a></th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="price in prices | orderBy:predicate:reverse track by $index " class="animate-repeat">
+                <td>
+                  <div class="wrapper-img"><img ng-src="{{price.src}}"></div>
+                  <h2 ng-bind="price.title"></h2>
+                </td>
+                <td ng-bind="price.town"></td>
+                <td ng-bind="price.product_type"></td>
+                <td><span ng-bind="price.price | splitSpace"></span></td>
+                <td ng-bind="price.date | date"></td>
+                <td><a download href="./download/certificate.pdf" class="download"></a></td>
+                <td>
+                  <div fadeinfly class="order"><a href="" ng-click="openPopup('request',{product:price,text_msg:'Заказать вид топлива'})"><span>Заказать</span></a></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </section>
+        <section class="status animated zoomInUp">
+          <div class="inner-status">
+            <h1 class="title-default">Статус доставки груза</h1>
+            <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
+              <input type="text" name="delivery_status" placeholder="Введите номер накладной" ng-model="dataForm.data.delivery_status" autocomplete="off" required><span ng-click="openPopup('request',{text_msg:'Где найти номер накладной'})">Где найти номер накладной</span>
+              <button ng-click="send(dataForm,formValidate,action)" class="send"><span>Показать</span></button>
+              <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;delivery_status&quot;" ng-model="dataForm.hidden.task">
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-map">
+        <div class="to-find-us">
+          <h1 class="title">Как нас найти</h1>
+          <h2>ООО «Феникс»</h2>
+          <ul>
+            <li>8 (800) 775-93-38</li>
+            <li>mail@tdfenix.com</li>
+            <li>428032, г Чебоксары,пл. Речников, д 3,помещение №2, офис 11</li>
+          </ul>
+        </div>
+        <div ng-controller="GMapCtrl" class="wrapper-footer-map">
+          <ui-gmap-google-map center="{&quot;latitude&quot;: 56.1482938,&quot;longitude&quot;: 47.2592382}" zoom="16" options="options">
+            <ui-gmap-marker coords="{&quot;latitude&quot;: 56.1482938,&quot;longitude&quot;: 47.2592382}" options="marker.options" idkey="1" ng-init="marker.options.icon='images/map-logo.png'"></ui-gmap-marker>
+          </ui-gmap-google-map>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="block">
+          <h3>Главное меню</h3>
+          <ul fadein3dfooter>
+            <li><a href="./">Документация</a></li>
+            <li><a href="./">Оформление заказа</a></li>
+            <li><a href="./">Аренда бензовозов</a></li>
+            <li><a href="./">Цены</a></li>
+            <li><a href="./">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Навигация</h3>
+          <ul fadein3dfooter>
+            <li><a href="./navigation.html">Виды бензина</a></li>
+            <li><a href="./navigation.html">АИ-92-4</a></li>
+            <li><a href="./navigation.html">АИ-95-4</a></li>
+            <li><a href="./navigation.html">Виды дизеля</a></li>
+            <li><a href="./navigation.html">Дизельное топливо</a></li>
+            <li><a href="./navigation.html">СМТ</a></li>
+            <li><a href="./navigation.html">Печное топливо</a></li>
+            <li><a href="./navigation.html">Виды керосина</a></li>
+            <li><a href="./navigation.html">Керосин</a></li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>Производители</h3>
+          <!-- В случае если у ul более 9 элементов, то ul добаляется класс .double-width-->
+          <ul fadein3dfooter class="double-width">
+            <li><a href="./manufacturer.html">Антипинский НПЗ</a></li>
+            <li><a href="./manufacturer.html">Астраханский ГПЗ</a></li>
+            <li><a href="./manufacturer.html">Газпром нефтехим Салават</a></li>
+            <li><a href="./manufacturer.html">Газпромнефть-МНПЗ</a></li>
+            <li><a href="./manufacturer.html">КРУ Татнефть АЗС-Центр</a></li>
+            <li><a href="./manufacturer.html">Куйбышевский НПЗ</a></li>
+            <li><a href="./manufacturer.html">НПЗ ТАНЕКО</a></li>
+            <li><a href="./manufacturer.html">Новойл</a></li>
+            <li><a href="./manufacturer.html">НПК</a></li>
+            <li><a href="./manufacturer.html">СЗСК Газпром переработка</a></li>
+            <li><a href="./manufacturer.html">Славнефть</a></li>
+            <li><a href="./manufacturer.html">Сызранский НПЗ</a></li>
+            <li><a href="./manufacturer.html">ТАИФ</a></li>
+            <li><a href="./manufacturer.html">Уфанефтехим</a></li>
+            <li><a href="./manufacturer.html">Уфимский НПЗ</a></li>
+            <li><a href="./manufacturer.html">ЧН Татнефть АЗС-Центр</a></li>
+          </ul>
+        </div>
+        <div fadein3dfooter class="block also-questions">
+          <h3>Остались вопросы?</h3>
+          <div><a ng-click="openPopup('request',{text_msg:'Задать вопрос менеджеру'})">Задайте их менеджеру</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="copyright"><span>©</span>2015 «fenix»</div><a href="http://tutmee.ru" class="firm-logo">
+            <div><span>Создание дизайна</span><span>и разработка сайтов</span><span>LTD Tutmee.ru</span></div>
+            <div><img src="./images/firm-logo.png" width="198" height="51"></div></a>
+        </div>
+      </div>
+    </footer>
+    <button ng-class="{'rubberBand':animated == true}" ng-mouseenter="enterEffect()" ng-mouseleave="leaveEffect()" ng-click="openPopup('request',{text_msg:'Напишите нам'})" class="write_to_us animated"><span><span></span></span><span></span><span></span></button>
+    <button move-up class="up"></button>
+    <!--popup-->
+    <popup-svg name="request" class="hide-block">
+      <section class="inner-popup-block">
+        <h1 ng-if="!data.text_msg" class="title-form">Заявка
+          <button rotate ng-click="closePopup('',{})" class="overlay-close"><span></span></button>
+        </h1>
+        <h1 ng-if="data.text_msg" class="title-form">{{data.text_msg}}
+          <button rotate ng-click="closePopup('',{})" class="overlay-close"><span></span></button>
+        </h1>
+        <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
+          <div>
+            <input id="name1" type="text" name="name1" ng-model="dataForm.data.name" autocomplete="off" required>
+            <label for="name1">Ваше имя</label>
+          </div>
+          <div>
+            <input id="phone1" type="text" name="phone1" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <label for="phone1">Ваш телефон</label>
+          </div>
+          <div>
+            <textarea id="msg1" type="text" name="msg1" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <label for="msg1">Сообщение</label>
+          </div>
+          <div ng-if="data.product" class="info">
+            <ul>
+              <li ng-if="data.product.title">
+                <h2 ng-bind="data.product.title"></h2>
+              </li>
+              <li ng-if="data.product.mark"><span>maрка</span>{{data.product.mark}}</li>
+              <li ng-if="data.product.grade_of_fuel"><span>класс топлива</span>{{data.product.grade_of_fuel}}</li>
+              <li ng-if="data.product.type"><span>вид</span>{{data.product.type}}</li>
+              <li ng-if="data.product.fuel">({{data.product.fuel}})</li>
+            </ul>
+          </div>
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send"><span>Отправить</span></button>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;request&quot;" ng-model="dataForm.hidden.task">
+          <input ng-if="data.text_msg" type="hidden" name="text_msg" ng-init="dataForm.data.text_msg=data.text_msg" ng-model="dataForm.data.text_msg">
+          <input ng-if="data.product" type="hidden" name="text" ng-init="dataForm.data.product=data.product" ng-model="dataForm.data.product">
+        </form>
+      </section>
+    </popup-svg>
+    <!--Стань партнером - блок выводить только на стрнаицах где есть <a href="" ng-click="openPopup('partners',{})"><span>Стань нашим партнером</span></a>-->
+    <popup-svg name="partners" class="hide-block">
+      <section class="inner-popup-block">
+        <h1 class="title-form">Стань партнером
+          <button rotate ng-click="closePopup('',{})" class="overlay-close"><span></span></button>
+        </h1>
+        <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
+          <div>
+            <input id="name2" type="text" name="name2" ng-model="dataForm.data.name" autocomplete="off" required>
+            <label for="name2">Ваше имя</label>
+          </div>
+          <div>
+            <input id="phone2" type="text" name="phone2" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <label for="phone2">Ваш телефон</label>
+          </div>
+          <div>
+            <textarea id="msg2" type="text" name="msg2" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <label for="msg2">Сообщение</label>
+          </div>
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send"><span>Отправить</span></button>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;partners&quot;" ng-model="dataForm.hidden.task">
+        </form>
+      </section>
+    </popup-svg>
+    <!-- Заказать - это блок будет на всех страницах-->
+    <popup-svg name="order" class="hide-block">
+      <section class="inner-popup-block">
+        <h1 class="title-form">Заказать
+          <button rotate ng-click="closePopup('',{})" class="overlay-close"><span></span></button>
+        </h1>
+        <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
+          <div>
+            <input id="name3" type="text" name="name3" ng-model="dataForm.data.name" autocomplete="off" required>
+            <label for="name3">Ваше имя</label>
+          </div>
+          <div>
+            <input id="phone3" type="text" name="phone3" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <label for="phone3">Ваш телефон</label>
+          </div>
+          <div>
+            <textarea id="msg3" type="text" name="msg3" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <label for="msg3">Сообщение</label>
+          </div>
+          <div ng-if="data.product" class="info">
+            <ul>
+              <li ng-if="data.product.title">
+                <h2 ng-bind="data.product.title"></h2>
+              </li>
+              <li ng-if="data.product.mark"><span>maрка</span>{{data.product.mark}}</li>
+              <li ng-if="data.product.grade_of_fuel"><span>класс топлива</span>{{data.product.grade_of_fuel}}</li>
+              <li ng-if="data.product.type"><span>вид</span>{{data.product.type}}</li>
+              <li ng-if="data.product.fuel">({{data.product.fuel}})</li>
+            </ul>
+          </div>
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send"><span>Отправить</span></button>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;order&quot;" ng-model="dataForm.hidden.task">
+          <input ng-if="data.product" type="hidden" name="text" ng-init="dataForm.data.product=data.product" ng-model="dataForm.data.product">
+        </form>
+      </section>
+    </popup-svg>
+    <!-- Заказать - это блок будет на всех страницах-->
+    <popup-svg name="recall" class="hide-block">
+      <section class="inner-popup-block">
+        <h1 class="title-form">Заказать звонок
+          <button rotate ng-click="closePopup('',{})" class="overlay-close"><span></span></button>
+        </h1>
+        <form name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate class="form-validate">
+          <div>
+            <input id="name4" type="text" name="name4" ng-model="dataForm.data.name" autocomplete="off" required>
+            <label for="name4">Ваше имя</label>
+          </div>
+          <div>
+            <input id="phone4" type="text" name="phone4" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <label for="phone4">Ваш телефон</label>
+          </div>
+          <div>
+            <textarea id="msg4" type="text" name="msg4" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+            <label for="msg4">Сообщение</label>
+          </div>
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send"><span>Отправить</span></button>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;recall&quot;" ng-model="dataForm.hidden.task">
+        </form>
+      </section>
+    </popup-svg>
+    <div ng-if="formIsValide==true" class="w">
+      <div ng-class="{'load':load==true}" class="wrapper-thank">
+        <div ng-click="hideThank()" rotate class="close"><span></span></div>
+        <div class="wrapper-thank-content">
+          <div class="wrapper-logo"><img src="./images/logo.png"></div><span>Спасибо за заявку!</span><span>В ближайшее время, наш сотрудник, обязательно с Вами свяжется.</span>
+        </div>
+      </div>
+    </div>
+    <div id="container-preloader" preloader="[&quot;&quot;]" animate-preloader class="svg-container-block">
+      <div class="progress">
+        <div id="persent-loaded" class="text">0</div>
+        <progress-circle></progress-circle>
+      </div>
+      <div class="content">
+        <div id="boxContainer" class="svg-container">
+          <svg id="boxLoader" width="70px" height="70px" viewbox="0 0 35 35" preserveaspectratio="none">
+            <rect x="0" fill="#a7e53b" width="35" height="35"></rect>
+          </svg>
+          <svg id="base" width="210px" height="210px" viewbox="0 0 105 105" preserveaspectratio="none">
+            <line stroke-width="1.5" fill="none" stroke="#dedede" stroke-miterlimit="10" x1="0" y1="52.5" x2="105" y2="52.5"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./scripts/vendors/preloadjs-0.6.1.min.js" defer></script>
+<script src="./scripts/vendors/snap.svg.js" defer></script>
+<script src="./scripts/bundle.js" defer></script>
+<!--script(src="http://localhost:8080/webpack-dev-server.js" defer)-->
+<!--script(src="http://localhost:8080/bundle.js" defer)-->

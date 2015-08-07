@@ -1,0 +1,72 @@
+//- index.jade
+extends ../layout.jade
+block content
+    section.wrapper-list-products
+        h1 Цены на реализуемые виды топлива
+        // predicate='title'; - значение по умолчания по какому полю сортировать таблицу при загруке
+        // action - url куда будет посылаться ajax,для загруки новых данных в таблицу
+        // prices - коллекция данных поставляемых в таблицу, при загрузке страницы
+        .wrapper-price(ng-init="predicate='title';action='./controller.php';prices=#{JSON.stringify(prices)}" ng-controller="PriceCtrl")
+            section.filter-block
+                // dataForm.manufacture - название входной коллекции, dataForm.manufacturerSelected - выбранный option, т.е. чтобы получить результурующее value
+                //данного select нужно обратиться {{dataForm.manufacturerSelected[0].value}}
+                custom-select(input-model="dataForm.manufacturer" output-model="dataForm.manufacturerSelected")
+                    options(value="" selected) Производитель
+                    each item in selects.manufacturer
+                        options(value="#{item.value}") #{item.maker}
+                custom-select(input-model="dataForm.town" output-model="dataForm.townSelected")
+                    options(value="" selected) Город
+                    each item in selects.towns
+                        options(value="#{item.value}") #{item.maker}
+                custom-select(input-model="dataForm.fuel_type" output-model="dataForm.fuel_typeSelected")
+                    options(value="" selected) Вид топлива
+                    each item in selects.fuel_type
+                        options(value="#{item.value}") #{item.maker}
+                button.send-filters(ng-click='send(dataForm,action)')
+                    span Подобрать
+            table.price-table
+                tr
+                    th(ng-class="{'active':predicate=='title'}")
+                        a(href="" ng-click="orderBy('title',0)" ng-class="(ordering[0])?'ask':'desk'")
+                            span Производитель
+                    th(ng-class="{'active':predicate=='town'}")
+                        a(href="" ng-click="orderBy('town',1)" ng-class="(ordering[1])?'ask':'desk'")
+                            span Город
+                    th(ng-class="{'active':predicate=='product_type'}")
+                        a(href="" ng-click="orderBy('product_type',2)" ng-class="(ordering[2])?'ask':'desk'")
+                            span Вид продукции
+                    th(ng-class="{'active':predicate=='price'}")
+                        a(href="" ng-click="orderBy('price',3)" ng-class="(ordering[3])?'desk':'ask'")
+                            span Цена за тонну
+                    th(ng-class="{'active':predicate=='date'}")
+                        a(href="" ng-click="orderBy('date',4)" ng-class="(ordering[4])?'desk':'ask'")
+                            span Обновление
+                    th
+                        a(href="")
+                            span Сертификаты
+                    th
+                tr.animate-repeat(ng-repeat="price in prices | orderBy:predicate:reverse track by $index ")
+                    td
+                        .wrapper-img
+                            img(ng-src="{{price.src}}")
+                        h2(ng-bind="price.title")
+                    td(ng-bind="price.town")
+                    td(ng-bind="price.product_type")
+                    td
+                        span(ng-bind="price.price | splitSpace")
+                    td(ng-bind="price.date | date")
+                    td
+                        a.download(download href="./download/certificate.pdf")
+                    td
+                        div.order(fadeinfly)
+                            a(href="" ng-click="openPopup('request',{product:price,text_msg:'Заказать вид топлива'})")
+                                span Заказать
+    section.status.animated.zoomInUp
+        .inner-status
+            h1.title-default Статус доставки груза
+            form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
+                input(type="text" name="delivery_status" placeholder="Введите номер накладной" ng-model='dataForm.data.delivery_status' autocomplete="off" required)
+                span(ng-click="openPopup('request',{text_msg:'Где найти номер накладной'})") Где найти номер накладной
+                button.send(ng-click='send(dataForm,formValidate,action)')
+                    span Показать
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="delivery_status"' ng-model='dataForm.hidden.task')

@@ -19,7 +19,7 @@
           <ul>
             <li><a href="./documentation.html">Документация</a></li>
             <li><a href="./checkout.html" class="active">Оформление заказа</a></li>
-            <li><a href="./rent.html">Аренда бензовозов</a></li>
+            <li><a href="./benzovozi.html">Аренда бензовозов</a></li>
             <li><a href="./price.html">Цены</a></li>
             <li><a href="./contacts.html">Контакты</a></li>
           </ul>
@@ -191,18 +191,30 @@
             <label for="name1">Ваше имя</label>
           </div>
           <div>
-            <input id="phone1" type="text" name="phone1" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone1" type="text" name="phone1" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone1">Ваш телефон</label>
           </div>
           <div>
             <textarea id="msg1" type="text" name="msg1" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
             <label for="msg1">Сообщение</label>
           </div>
+          <div ng-if="data.product" class="info">
+            <ul>
+              <li ng-if="data.product.title">
+                <h2 ng-bind="data.product.title"></h2>
+              </li>
+              <li ng-if="data.product.mark"><span>maрка</span>{{data.product.mark}}</li>
+              <li ng-if="data.product.grade_of_fuel"><span>класс топлива</span>{{data.product.grade_of_fuel}}</li>
+              <li ng-if="data.product.type"><span>вид</span>{{data.product.type}}</li>
+              <li ng-if="data.product.fuel">({{data.product.fuel}})</li>
+            </ul>
+          </div>
           <div class="wrapper-send">
             <button ng-click="send(dataForm,formValidate,action)" class="send"><span>Отправить</span></button>
           </div>
           <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;request&quot;" ng-model="dataForm.hidden.task">
           <input ng-if="data.text_msg" type="hidden" name="text_msg" ng-init="dataForm.data.text_msg=data.text_msg" ng-model="dataForm.data.text_msg">
+          <input ng-if="data.product" type="hidden" name="text" ng-init="dataForm.data.product=data.product" ng-model="dataForm.data.product">
         </form>
       </section>
     </popup-svg>
@@ -218,7 +230,7 @@
             <label for="name2">Ваше имя</label>
           </div>
           <div>
-            <input id="phone2" type="text" name="phone2" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone2" type="text" name="phone2" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone2">Ваш телефон</label>
           </div>
           <div>
@@ -244,7 +256,7 @@
             <label for="name3">Ваше имя</label>
           </div>
           <div>
-            <input id="phone3" type="text" name="phone3" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone3" type="text" name="phone3" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone3">Ваш телефон</label>
           </div>
           <div>
@@ -282,7 +294,7 @@
             <label for="name4">Ваше имя</label>
           </div>
           <div>
-            <input id="phone4" type="text" name="phone4" ng-model="dataForm.data.phone" autocomplete="off" required>
+            <input id="phone4" type="text" name="phone4" ui-mask="+7(999)-999-99-99" ng-model="dataForm.data.phone" autocomplete="off" required>
             <label for="phone4">Ваш телефон</label>
           </div>
           <div>
@@ -324,6 +336,6 @@
 </html>
 <script src="./scripts/vendors/preloadjs-0.6.1.min.js" defer></script>
 <script src="./scripts/vendors/snap.svg.js" defer></script>
-<!--script(src="./scripts/bundle.js" defer)-->
-<script src="http://localhost:8080/webpack-dev-server.js" defer></script>
-<script src="http://localhost:8080/bundle.js" defer></script>
+<script src="./scripts/bundle.js" defer></script>
+<!--script(src="http://localhost:8080/webpack-dev-server.js" defer)-->
+<!--script(src="http://localhost:8080/bundle.js" defer)-->

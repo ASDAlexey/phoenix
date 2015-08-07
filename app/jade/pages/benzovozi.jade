@@ -19,21 +19,22 @@ block content
                                 li
                                     strong #{value}
                     .content-info
-                        h2 #{fuel_tanker.title}
-                        ul.list-numbers
-                            li Регистрационный номер:
-                                strong #{fuel_tanker.registration_number}
-                            li Регистрационный номер полуприцепа:
-                                strong #{fuel_tanker.registration_number_trailer}
-                        h3 Водители:
-                        ul.list-drivers
-                            each driver in fuel_tanker.drivers
-                                li
-                                    span #{driver}
-                                    a(href="") Получить персональные данные
-                        div.order(fadeinfly)
-                            a(href="" ng-click="openPopup('order',{product:'#{JSON.stringify(fuel_tanker)}'})")
-                                span Арендовать
+                        .inner
+                            h2 #{fuel_tanker.title}
+                            ul.list-numbers
+                                li Регистрационный номер:
+                                    strong #{fuel_tanker.registration_number}
+                                li Регистрационный номер полуприцепа:
+                                    strong #{fuel_tanker.registration_number_trailer}
+                            h3 Водители:
+                            ul.list-drivers
+                                each driver in fuel_tanker.drivers
+                                    li
+                                        span #{driver}
+                                        a(href="") Получить персональные данные
+                            div.order(fadeinfly)
+                                a(href="" ng-click="openPopup('request',{product:'#{JSON.stringify(fuel_tanker)}',text_msg:'Арендовать'})")
+                                    span Арендовать
     section.status.animated.zoomInUp
         .inner-status
             h1.title-default Статус доставки груза
