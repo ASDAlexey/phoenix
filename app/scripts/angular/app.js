@@ -8,11 +8,9 @@ import './price';
 app=angular.module("App",[
     'ngAnimate',
     'ui.mask',
-    'validation.match',
     'uiGmapgoogle-maps',
     'isteven-multi-select',
-    //'ngSanitize',
-    //'ui.select',
+    'materialDatePicker',
     'App.preloader',
     'App.map',
     'App.animate',
@@ -25,7 +23,4 @@ app.run(function($timeout,$rootScope){
         $rootScope.load=true;
     },1500);
 });
-//app.config(function(uiSelectConfig){
-//    uiSelectConfig.theme='selectize';
-//});
 angular.bootstrap(document.getElementsByTagName("html"),["App"]);

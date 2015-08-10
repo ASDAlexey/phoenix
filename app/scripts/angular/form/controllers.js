@@ -3,6 +3,25 @@ var controller;
 controller=angular.module("App.form.controllers",[]);
 controller.controller("FormCtrl",[
     "$scope","$http","$rootScope","$timeout","$window","$document",function($scope,$http,$rootScope,$timeout){
+        $scope.arrows={
+            year:{
+                left:'images/white_arrow_left.svg',
+                right:'images/white_arrow_right.svg'
+            },
+            month:{
+                left:'images/grey_arrow_left.svg',
+                right:'images/grey_arrow_right.svg'
+            }
+        };
+        $scope.header={
+            monday:'Пн',
+            tuesday:'Вт',
+            wednesday:'Ср',
+            thursday:'Чт',
+            friday:'Пт',
+            saturday:'Сб',
+            sunday:'Вс'
+        };
         $scope.isCalcForm=true;
         $scope.dataForm={};
         $scope.back=function(){

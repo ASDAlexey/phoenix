@@ -34,7 +34,8 @@ module.exports={
 
     resolve:{
         alias:{
-            'TweenLite':'gsap/src/uncompressed/TweenLite'
+            'TweenLite':'gsap/src/uncompressed/TweenLite',
+            moment:'moment'
         }
     },
     module:{
@@ -72,7 +73,7 @@ module.exports={
         //    server: { baseDir: ['app'] }
         //    //proxy: '0.0.0.0:3000'
         //}),
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         new ngminPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({

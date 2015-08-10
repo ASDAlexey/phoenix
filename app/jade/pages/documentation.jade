@@ -1,0 +1,145 @@
+//- index.jade
+extends ../layout.jade
+block content
+    section.documentation
+        ul
+            li
+                div
+                    .wrapper-img
+                        img(src="./images/documentation/1.png")
+                    h1.title Формы договоров
+                div
+                    ul
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Договор поручительства с физическим лицом
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Договор поручительства с юридическим лицом
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Договор аренды транспортных средств
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Договор купли-продажи топлива
+                div
+            li
+                div
+                    .wrapper-img
+                        img(src="./images/documentation/2.png")
+                    h1.title Учредительные документы и  реквизиты
+                div
+                    ul
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Заявка на поставку нефтепродуктов
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Карта партнера ООО "Феникс"
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Устав
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Свидетельство о постановке на налоговый учет
+                        li
+                            a(href="http://docs.google.com/viewer?url=http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" target="_blank")
+                            a(href="http://tdfenix.com:82/sites/default/files/docs/dogovor_poruchitelstva_s_fizicheskim_licom_na_2013_0_0.doc" download)
+                            span Свидетельство о регистрации
+                div
+            li
+                div
+                    .wrapper-img
+                        img(src="./images/documentation/3.png")
+                    h1.title Запрос бухгалтерских документов
+                div
+                    form(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
+                        table.table-request
+                            tr
+                                td
+                                    span Документы *
+                                td
+                                    span(ng-class="{'active':dataForm.radio.documentation==1}" ng-init="dataForm.radio.documentation=1" ng-click="dataForm.radio.documentation=1") Акт сверки
+                                    span(ng-class="{'active':dataForm.radio.documentation==2}" ng-click="dataForm.radio.documentation=2") Счет
+                                    span(ng-class="{'active':dataForm.radio.documentation==3}" ng-click="dataForm.radio.documentation=3") Счет-фактура
+                            tr
+                                td
+                                    span Начало периода
+                                td
+                                    mb-datepicker(element-id='date1'
+                                    input-class="testClass"
+                                    input-name="testName"
+                                    arrows="arrows"
+                                    calendar-header="header"
+                                    date="dataForm.data.date_start"
+                                    date-format="DD/MM/YYYY")
+                            tr
+                                td
+                                    span Конец периода
+                                td
+                                    mb-datepicker(element-id='date2'
+                                    input-class="testClass"
+                                    input-name="testName"
+                                    arrows="arrows"
+                                    calendar-header="header"
+                                    min-date="{{dataForm.data.date_start}}"
+                                    date="dataForm.data.date_end"
+                                    date-format="DD/MM/YYYY")
+                            tr
+                                td
+                                    span Способ доставки
+                                td
+                                    span(ng-class="{'active':dataForm.radio.delivery_method==1}" ng-init="dataForm.radio.delivery_method=2" ng-click="dataForm.radio.delivery_method=1") Почта
+                                    span(ng-class="{'active':dataForm.radio.delivery_method==2}" ng-click="dataForm.radio.delivery_method=2") E-mail
+                            tr(ng-if="dataForm.radio.delivery_method==2")
+                                td
+                                    span E-mail
+                                td
+                                    div
+                                        input(type="email" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
+                                    button.send(ng-click='send(dataForm,formValidate,action)')
+                                        span Запросить
+                            tr(ng-if="dataForm.radio.delivery_method==1")
+                                td
+                                    span Почтовый адрес
+                                td
+                                    div
+                                        input(type="text" name="post_address" ng-model='dataForm.data.post_address' autocomplete="off" required)
+                            tr(ng-if="dataForm.radio.delivery_method==1")
+                                td
+                                    span Контактное лицо
+                                td
+                                    div
+                                        input(type="text" name="contact_person" ng-model='dataForm.data.contact_person' autocomplete="off" required)
+                            tr(ng-if="dataForm.radio.delivery_method==1")
+                                td
+                                    span Телефон
+                                td
+                                    div
+                                        input(type="text" name="phone" ui-mask="+7(999)-999-99-99" ng-model='dataForm.data.phone' autocomplete="off" required)
+                            tr(ng-if="dataForm.radio.delivery_method==1")
+                                td
+                                    span Наименование организации
+                                td
+                                    div
+                                        input(type="text" name="name_organization" ng-model='dataForm.data.name_organization' autocomplete="off" required)
+                                    button.send(ng-click='send(dataForm,formValidate,action)')
+                                        span Запросить
+                div
+    section.status.animated.zoomInUp
+        .inner-status
+            h1.title-default Статус доставки груза
+            form.form-validate(name="formValidate" ng-controller="FormCtrl" ng-init="action='./controller.php'" novalidate)
+                input(type="text" name="delivery_status" placeholder="Введите номер накладной" ng-model='dataForm.data.delivery_status' autocomplete="off" required)
+                span(ng-click="openPopup('request',{text_msg:'Где найти номер накладной'})") Где найти номер накладной
+                button.send(ng-click='send(dataForm,formValidate,action)')
+                    span Показать
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="delivery_status"' ng-model='dataForm.hidden.task')

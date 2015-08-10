@@ -1,0 +1,151 @@
+.documentation
+  > ul
+    display:table
+    width:100%
+    > li
+      display:table-row
+      width:100%
+      min-height 239px
+      background-color:#e8e5d2
+      tn(.5s)
+      form
+        width:514px
+      .table-request
+        > tbody
+          > tr
+            &:last-child
+              > td
+                height:62px
+            &:nth-child(-n+4)
+              > td
+                border-bottom:1px dashed #6d7171
+            > td
+              height:37px
+              > div
+                dibt()
+              &:not(:first-child)
+                > span
+                  cursor:pointer
+                  dibt()
+                  margin-left:49px
+                  color:#51565a
+                  rl(16px)
+                  position:relative
+                  z-index:0
+                  &:first-child
+                    margin-left:20px
+                  &.active
+                    &:after
+                      sprite($checkbox_active)
+                  &:after
+                    left:-21px
+                    top:-1px
+                    content:''
+                    position:absolute
+                    z-index:1
+                    sprite($checkbox)
+              &:first-child
+                width:160px
+              > input
+                width:200px
+                border-color:#9c9d96
+                height:29px
+                dibt()
+                margin-top:4px
+      .send
+        border:2px solid #e5696b
+        dibt()
+        border-radius:6px
+        padding:6px 15px 5px
+        position:relative
+        z-index:0
+        overflow hidden
+        top:-6px
+        &:hover
+          &:after
+            left:0
+          span
+            color:#fff
+        &:after
+          content:''
+          position:absolute
+          z-index:0
+          top:0
+          left:100%
+          width:100%
+          height:100%
+          background-color:#e5696b
+          tn(.5s)
+        span
+          tn(.5s)
+          position:relative
+          z-index:1
+          bb(24px)
+          color:#e5696b
+          dibt()
+      &:hover
+        background-color:#cdcab5
+        &:nth-child(2n+1)
+          background-color:#cdcab5
+      &:nth-child(2n+1)
+        background-color:#d9d6bf
+      > div
+        padding:50px 45px 50px 0
+        display:table-cell
+        vertical-align:middle
+        width:266px
+        text-align:center
+        &:nth-child(2)
+          text-align:left
+          width:514px
+        > .wrapper-img
+          border-radius:50%
+          width:100px
+          height:100px
+          background-color:#fff
+          dibt()
+          position:relative
+          z-index:0
+          overflow hidden
+          img
+            max-width 95%
+            max-height 95%
+            aa(1)
+            dibt()
+        .title
+          margin:0 auto
+          text-align:center
+          max-width 200px
+          margin-top:22px
+          color:#51565a
+          text-transform:uppercase
+          br(24px)
+        > ul
+          text-align:left
+          dibt()
+          vertical-align:middle
+          padding:37px 0
+          > li
+            background:none
+            margin-top:23px
+            position:relative
+            z-index:0
+            &:first-child
+              margin-top:0
+            a
+              position:absolute
+              z-index:0
+              dibt()
+              top:0
+              &:first-of-type
+                sprite($l1)
+                margin-right:17px
+                left:30px
+              &:nth-of-type(2)
+                left:62px
+                sprite($l2)
+            span
+              dibt()
+              padding-left:90px
+              color:#51565a
+              rl(16px, 1.3)
