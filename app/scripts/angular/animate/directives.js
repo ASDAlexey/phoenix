@@ -132,3 +132,26 @@ directive.directive('moveUp',[
         };
     }
 ]);
+directive.directive('pointerEventsScroll',[
+    "$window",function($window){
+        return {
+            restrict:"A",
+            link:function(scope,element,attr){
+                return angular.element(document).ready(function(){
+                    var body,timer;
+                    body=document.body;
+                    timer= void 0;
+                    return $window.addEventListener('scroll',(function(){
+                        clearTimeout(timer);
+                        if(!body.classList.contains('disable-hover')){
+                            body.classList.add('disable-hover');
+                        }
+                        return timer=setTimeout((function(){
+                            return body.classList.remove('disable-hover');
+                        }),500);
+                    }),false);
+                });
+            }
+        };
+    }
+]);
